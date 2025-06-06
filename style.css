@@ -1,0 +1,790 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Lato', sans-serif;
+    --color-background: #FDFCF7; /* Um branco levemente amarelado, como papel antigo */
+    --color-background-section: #FFFFFF; /* Fundo branco para seções do cardápio */
+    --color-text-primary: #4A3B31; /* Marrom escuro para texto principal */
+    --color-text-secondary: #7A6A5D; /* Marrom mais claro para descrições */
+    --color-accent: #8C1C1C; /* Um vermelho vinho para acentos e títulos */
+    --color-accent-light: #b33e3e; /* Versão mais clara do vermelho vinho */
+    --color-border: #D4C8BC; /* Cor suave para bordas e separadores */
+    --shadow-light: 0 2px 5px rgba(0,0,0,0.05);
+    --shadow-medium: 0 4px 10px rgba(0,0,0,0.1);
+    --shadow-large: 0 8px 20px rgba(0,0,0,0.15);
+    --shadow-inset: inset 0 2px 5px rgba(0,0,0,0.05);
+
+    /* Novas variáveis para a navegação estilo lombada/abas */
+    --color-nav-lombada-bg: #4A3B31; /* Marrom café profundo, como couro */
+    --color-nav-lombada-border: #6F5B50; /* Tom mais claro para borda da lombada */
+    --color-nav-aba-bg: #FBF5E9; /* Bege pergaminho claro */
+    --color-nav-aba-border: #D4C8BC; /* Sépia para borda da aba (reutilizando --color-border) */
+    --color-nav-aba-text: var(--color-text-primary);
+    --color-nav-aba-active-bg: var(--color-background); /* Conecta com o fundo principal da página */
+    --color-nav-aba-active-border-color: var(--color-nav-lombada-bg);
+    --color-nav-aba-hover-bg: #F5F0E0; /* Um pouco mais escuro para hover */
+    --color-primary-darker: #731616; /* Tom mais escuro do accent para hover em preços, etc. */
+    
+    /* Novas variáveis para elementos adicionais */
+    --color-vegetarian: #558B2F; /* Verde para indicador vegetariano */
+    --color-search-bg: rgba(255, 255, 255, 0.15); /* Fundo para campo de busca */
+    --transition-default: all 0.3s ease;
+    --transition-fast: all 0.2s ease;
+    --transition-slow: all 0.5s ease;
+    --border-radius-small: 4px;
+    --border-radius-default: 8px;
+    --border-radius-large: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px; /* Ajuste para compensar o header fixo */
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    font-size: 16px; /* Base font size */
+    padding-top: 130px; /* Space for fixed header - Adjusted for new header height */
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    /* Simulação de textura sutil com gradiente */
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.06) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.06) 75%, transparent 75%, transparent);
+    background-size: 60px 60px; /* Tamanho da 'repetição' da textura */
+    background-color: var(--color-accent); /* Cor base por baixo do gradiente */
+    color: var(--color-background);
+    padding: 20px 15px;
+    font-family: var(--font-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--shadow-medium);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 2.3em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    position: relative; /* Para o pseudo-elemento se posicionar corretamente */
+    padding-bottom: 12px; /* Espaço para o filete abaixo */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Sombra sutil no texto */
+}
+
+header h1::after {
+    content: '';
+    display: block;
+    width: 80px; /* Largura do filete */
+    height: 2px;
+    background-color: var(--color-background); /* Cor do filete */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centralizar o filete */
+}
+
+/* Campo de busca */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-search-bg);
+    border-radius: var(--border-radius-large);
+    padding: 5px 10px;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#menu-search {
+    background: transparent;
+    border: none;
+    color: var(--color-background);
+    padding: 8px;
+    flex-grow: 1;
+    font-family: var(--font-secondary);
+    font-size: 0.9em;
+}
+
+#menu-search::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#menu-search:focus {
+    outline: none;
+}
+
+#search-button,
+#search-clear {
+    background: transparent;
+    border: none;
+    color: var(--color-background);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 0.9em;
+    opacity: 0.7;
+    transition: var(--transition-fast);
+}
+
+#search-button:hover,
+#search-clear:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#search-clear {
+    display: none;
+}
+
+/* Menu de legendas */
+.menu-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 1080px;
+    font-size: 0.85em;
+    color: var(--color-text-secondary);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-item i {
+    color: var(--color-accent);
+}
+
+nav#menu-nav {
+    background-color: var(--color-nav-lombada-bg);
+    padding: 10px 0 0 0; /* Padding superior para dar espaço, sem padding inferior pois as abas preenchem */
+    position: sticky;
+    top: 130px; /* Ajustado para o novo tamanho do header */
+    z-index: 999;
+    border-top: 2px solid var(--color-nav-lombada-border);
+    border-bottom: 2px solid var(--color-nav-lombada-border);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.1), inset 0 -3px 5px rgba(0,0,0,0.1); /* Sombra interna para efeito lombada */
+    overflow-x: auto;
+    white-space: nowrap; /* Para os itens da lista ficarem em linha */
+    -webkit-overflow-scrolling: touch; /* Melhora scroll em iOS */
+    scroll-behavior: smooth;
+}
+
+nav#menu-nav ul {
+    list-style: none;
+    text-align: center; /* Centraliza o conjunto de abas */
+    padding: 0 15px; /* Espaçamento nas laterais da lista de abas */
+    margin: 0;
+    display: flex; /* Usar flex para melhor controle das abas */
+    justify-content: flex-start; /* Alinhar abas à esquerda por padrão em overflow */
+}
+
+nav#menu-nav ul li {
+    display: inline-block; /* Mantém, mas flex no pai é mais moderno */
+    margin: 0 3px 0 0; /* Pequena margem à direita de cada aba, sem margem inferior */
+}
+
+nav#menu-nav ul li a {
+    display: inline-block; /* Para que o padding funcione corretamente */
+    text-decoration: none;
+    color: var(--color-nav-aba-text);
+    font-family: var(--font-primary); /* Fonte elegante para as abas */
+    font-weight: 600; /* Um pouco menos pesado que 700 */
+    font-size: 0.9em; /* Ajustar tamanho da fonte da aba */
+    padding: 12px 20px 10px 20px; /* Padding para formato de aba */
+    background-color: var(--color-nav-aba-bg);
+    border: 1px solid var(--color-nav-aba-border);
+    border-bottom: none; /* Sem borda inferior para parecer que se projeta da lombada */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: -1px; /* Para sobrepor levemente a borda inferior da lombada, se houver */
+    position: relative; /* Para z-index funcionar se necessário */
+    box-shadow: 0 -2px 3px rgba(0,0,0,0.03) inset; /* Sombra interna sutil na aba */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+nav#menu-nav ul li a:not(.active):hover {
+    background-color: var(--color-nav-aba-hover-bg);
+    color: var(--color-nav-lombada-bg);
+    transform: translateY(-3px); /* Levemente mais elevado */
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.12) inset, 0 2px 6px rgba(0,0,0,0.08); /* Sombra interna mais pronunciada e externa mais suave */
+}
+
+nav#menu-nav ul li a.active {
+    background-color: var(--color-nav-aba-active-bg);
+    color: var(--color-text-primary);
+    font-weight: 700; /* Mais destaque para o ativo */
+    border-color: var(--color-nav-aba-active-border-color); /* Borda mais escura para aba ativa */
+    border-bottom: none; /* Mantém sem borda inferior */
+    /* Simula que a aba está 'à frente' e conectada ao conteúdo */
+    box-shadow: 0 -3px 7px rgba(0,0,0,0.07) inset, 0 3px 5px rgba(0,0,0,0.1);
+    z-index: 2; /* Para garantir que a aba ativa fique sobre as outras se houver sobreposição */
+    transform: translateY(0); /* Resetar o translateY do hover */
+}
+
+main#menu-content {
+    padding: 20px 15px; /* Space around content */
+    max-width: 1080px; /* Match container width */
+    margin: 0 auto; /* Centering content */
+    position: relative;
+}
+
+.menu-section {
+    margin-bottom: 50px;
+    padding: 32px; /* Aumentar padding interno */
+    background-color: var(--color-background-section); /* Usar variável */
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-default); /* Usar variável */
+    box-shadow: var(--shadow-light); /* Adicionar sombra suave */
+    scroll-margin-top: 180px; /* Para a rolagem suave levar em consideração o header + nav + legend */
+    /* Implementação da animação de entrada */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--color-accent);
+    opacity: 0.6;
+}
+
+.menu-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(74,59,49,0.12);
+}
+
+.section-hidden {
+    opacity: 0;
+    transform: translateY(30px); /* Começa um pouco abaixo e invisível */
+}
+
+.menu-section h2 {
+    font-family: var(--font-primary);
+    color: var(--color-accent);
+    font-size: 2.3em; /* Levemente maior */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 35px; /* Mais espaço abaixo do título */
+    padding-bottom: 10px; /* Menos padding para a borda ficar mais próxima */
+    border-bottom: 1px solid var(--color-border); /* Borda mais fina */
+    position: relative;
+}
+
+.menu-section h2::after { /* Decorative element for titles */
+    content: '';
+    display: block;
+    width: 70px; /* Um pouco mais largo */
+    height: 2.5px; /* Um pouco mais fino */
+    background-color: var(--color-accent);
+    margin: 8px auto 0; /* Mais próximo do título */
+    transition: width 0.3s ease-in-out;
+}
+
+.menu-section:hover h2::after {
+    width: 90px; /* Aumenta a largura no hover da seção */
+}
+
+.menu-section h3 { /* For subcategories like Vinhos */
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.menu-item {
+    margin-bottom: 20px; /* Ajuste de margem */
+    padding: 15px 10px; /* Adicionar padding interno para hover effect */
+    border-bottom: 1px dotted var(--color-border);
+    display: flex;
+    flex-wrap: nowrap; /* Evitar quebra de linha entre detalhes e preço */
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 5px; /* Para o hover effect */
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.menu-item:hover {
+    background-color: #fdfaf6; /* Um bege muito sutil no hover */
+    box-shadow: 0 3px 10px rgba(74,59,49,0.05);
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-details {
+    flex-grow: 1;
+    padding-right: 15px; /* Space for price */
+}
+
+.item-name {
+    font-family: var(--font-primary); /* Mudar para fonte primária */
+    font-weight: 700;
+    font-size: 1.3em; /* Levemente maior */
+    color: var(--color-text-primary);
+    margin-bottom: 6px; /* Ajuste de margem */
+    display: flex;
+    align-items: center;
+}
+
+.vegetarian-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #2E7D32; /* Green for vegetarian */
+    color: white;
+    font-weight: bold;
+    font-size: 0.75em;
+    margin-left: 8px;
+    font-family: var(--font-secondary);
+}
+
+.item-description {
+    font-size: 0.95em;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.item-price {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--color-accent);
+    white-space: nowrap;
+    padding-left: 15px; /* Espaço entre a descrição/linha pontilhada e o preço */
+    flex-shrink: 0; /* Evitar que o preço encolha */
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.menu-item:hover .item-price {
+    transform: scale(1.05);
+    color: var(--color-primary-darker); /* Usar uma var existente ou criar uma nova se necessário */
+}
+
+.item-options {
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 20px; /* Indent options */
+}
+
+.item-options span {
+    display: block;
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 15px; /* Espaço para o marcador */
+}
+
+.item-options span::before {
+    content: '•'; /* Marcador de círculo simples */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-accent);
+    font-size: 1.1em;
+    line-height: inherit;
+}
+
+.item-options span strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.section-notes,
+.item-notes {
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    margin-top: 15px; /* Mais espaço acima das notas */
+    padding: 10px;
+    background-color: #fdfaf6; /* Fundo bege muito sutil */
+    border-left: 3px solid var(--color-border);
+    font-style: italic;
+    width: 100%; 
+    text-align: left;
+    position: relative;
+    /* padding-left: 30px; Espaço para o ícone se fosse maior */
+}
+
+/* Ícone informativo para notas - pode ser melhorado com SVG ou font icon */
+/* .section-notes::before,
+.item-notes::before {
+    content: 'ℹ'; 
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-accent);
+    font-size: 1.2em;
+    font-style: normal; 
+} */
+.item-notes {
+    padding-left: 20px;
+}
+
+/* Resultados de busca */
+.search-results-container {
+    background-color: var(--color-background-section);
+    border-radius: var(--border-radius-default);
+    border: 1px solid var(--color-border);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-medium);
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.search-results-container.hidden {
+    display: none;
+}
+
+.search-results-container h2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-primary);
+}
+
+#close-search {
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font-size: 1em;
+    transition: var(--transition-fast);
+}
+
+#close-search:hover {
+    color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+/* Botão voltar ao topo */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-default);
+    box-shadow: var(--shadow-medium);
+    z-index: 99;
+}
+
+#back-to-top.visible {
+    opacity: 0.8;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-large);
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px; /* Aumentar padding vertical */
+    background-color: var(--color-nav-lombada-bg); /* Fundo escuro da lombada */
+    color: var(--color-background); /* Texto claro */
+    font-size: 0.85em; /* Texto um pouco menor */
+    margin-top: 50px; /* Mais espaço acima do footer */
+    border-top: 2px solid var(--color-nav-lombada-border); /* Borda superior correspondente à lombada */
+    line-height: 1.6;
+}
+
+.footer-content {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.footer-info {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-info p i {
+    margin-right: 8px;
+    color: var(--color-background);
+    opacity: 0.8;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    color: var(--color-background);
+    font-size: 1.4em;
+    opacity: 0.8;
+    transition: var(--transition-fast);
+}
+
+.footer-social a:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.copyright {
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { 
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Classe para destacar resultados de busca */
+.highlight {
+    background-color: rgba(140, 28, 28, 0.15);
+    padding: 0 2px;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+/* Indicadores de categorias especiais */
+.vegetarian-icon {
+    color: var(--color-vegetarian);
+    margin-left: 8px;
+    font-size: 0.8em;
+    vertical-align: super;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .header-content {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        padding-top: 120px; /* Adjusted for new header height */
+    }
+
+    .header-content {
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+        padding-bottom: 8px;
+    }
+    
+    nav#menu-nav {
+        top: 120px; /* Match body padding-top */
+    }
+
+    .menu-section {
+        padding: 25px;
+        scroll-margin-top: 170px; /* header + nav + buffer */
+    }
+
+    .menu-section h2 {
+        font-size: 1.8em;
+    }
+
+    .menu-section h3 {
+        font-size: 1.3em;
+    }
+
+    .item-name {
+        font-size: 1.15em;
+    }
+
+    .item-price {
+        font-size: 1.1em;
+    }
+
+    .item-details {
+        flex-basis: 100%; /* Stack details and price on smaller screens */
+        margin-bottom: 8px;
+        padding-right: 0;
+    }
+    
+    .item-price {
+        text-align: left;
+        padding-left: 0;
+    }
+    
+    #back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 110px; /* Adjusted for new header height */
+    }
+    
+    header {
+        padding: 15px 10px;
+    }
+    
+    header h1 {
+        font-size: 1.7em;
+    }
+    
+    .search-container {
+        padding: 3px 8px;
+    }
+    
+    #menu-search {
+        padding: 6px;
+    }
+    
+    .menu-legend {
+        padding: 5px;
+        gap: 12px;
+        font-size: 0.8em;
+    }
+    
+    nav#menu-nav {
+        top: 110px; /* Match body padding-top */
+        padding: 8px 0;
+    }
+    
+    nav#menu-nav ul li a {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+    
+    .menu-section {
+        padding: 20px;
+        scroll-margin-top: 160px; /* header + nav + buffer */
+    }
+    
+    .menu-section h2 {
+        font-size: 1.6em;
+        padding-bottom: 10px;
+    }
+    
+    .menu-section h3 {
+        font-size: 1.3em;
+    }
+    
+    .item-name {
+        font-size: 1.05em;
+    }
+    
+    .item-description {
+        font-size: 0.9em;
+    }
+    
+    .item-price {
+        font-size: 1em;
+    }
+    
+    #back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .footer-social a {
+        font-size: 1.2em;
+    }
+}
+
+
