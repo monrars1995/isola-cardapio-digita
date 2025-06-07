@@ -1,0 +1,16 @@
+{
+  "name": "isola-digital-menu",
+  "version": "1.0.0",
+  "description": "Digital menu for Isola Italian restaurant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["restaurant", "menu", "italian", "digital"],
+  "author": "Isola Restaurant",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
