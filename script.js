@@ -116,10 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('menu-search');
     const searchButton = document.getElementById('search-button');
     const searchClear = document.getElementById('search-clear');
-    const searchResults = document.getElementById('search-results');
-    const searchResultsList = document.querySelector('.search-results-list');
-    const closeSearchBtn = document.getElementById('close-search');
     const backToTopBtn = document.getElementById('back-to-top');
+
+    // State management
+    let currentCategory = null;
+    let allMenuItems = [];
 
     // Welcome screen functionality
     const showMenu = () => {
@@ -170,7 +171,71 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    // Generate navigation and content
+    // Dynamic category rendering
+    const renderCategory = (categorySlug) => {
+        // Clear existing content except search results
+        const existingSections = menuContent.querySelectorAll('.menu-section');
+        existingSections.forEach(section => section.remove());
+
+        // Find the category data
+        let categoryData = null;
+        let categoryName = null;
+
+        for (const category in menuData) {
+            if (createSlug(category) === categorySlug) {
+                categoryData = menuData[category];
+                categoryName = category;
+                break;
+            }
+        }
+
+        if (!categoryData) return;
+
+        // Create and render the section
+        const section = document.createElement('section');
+        section.id = categorySlug;
+        section.className = 'menu-section';
+        section.setAttribute('data-category', categoryName);
+
+        const sectionTitle = document.createElement('h2');
+        sectionTitle.textContent = categoryName;
+        section.appendChild(sectionTitle);
+
+        // Handle items or subcategories
+        if (Array.isArray(categoryData)) {
+            categoryData.forEach(item => {
+                section.appendChild(createMenuItem(item, categoryName));
+            });
+        } else if (typeof categoryData === 'object') {
+            for (const subCategory in categoryData) {
+                const subSectionTitle = document.createElement('h3');
+                subSectionTitle.textContent = subCategory;
+                section.appendChild(subSectionTitle);
+                categoryData[subCategory].forEach(item => {
+                    section.appendChild(createMenuItem(item, categoryName));
+                });
+            }
+        }
+
+        // Add category-specific notes
+        const categoryNotes = getCategoryNotes(categoryName);
+        if (categoryNotes) {
+            const notes = document.createElement('div');
+            notes.className = 'section-notes';
+            notes.innerHTML = categoryNotes;
+            section.appendChild(notes);
+        }
+
+        menuContent.appendChild(section);
+        currentCategory = categorySlug;
+
+        // Trigger animation
+        setTimeout(() => {
+            section.classList.remove('section-hidden');
+        }, 50);
+    };
+
+    // Generate navigation and initial setup
     const generateMenu = () => {
         // Clear existing content
         navList.innerHTML = '';
@@ -186,7 +251,24 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         menuContent.appendChild(searchContainer);
 
-        // Generate menu sections
+        // Generate all menu items for search
+        allMenuItems = [];
+        for (const category in menuData) {
+            if (Array.isArray(menuData[category])) {
+                menuData[category].forEach(item => {
+                    allMenuItems.push({ ...item, category });
+                });
+            } else if (typeof menuData[category] === 'object') {
+                for (const subCategory in menuData[category]) {
+                    menuData[category][subCategory].forEach(item => {
+                        allMenuItems.push({ ...item, category, subCategory });
+                    });
+                }
+            }
+        }
+
+        // Generate navigation
+        let isFirst = true;
         for (const category in menuData) {
             const categorySlug = createSlug(category);
 
@@ -196,46 +278,19 @@ document.addEventListener('DOMContentLoaded', () => {
             navLink.textContent = category.split(' - ')[0];
             navLink.href = `#${categorySlug}`;
             navLink.setAttribute('data-category', categorySlug);
+            
+            if (isFirst) {
+                navLink.classList.add('active');
+                isFirst = false;
+            }
+            
             navItem.appendChild(navLink);
             navList.appendChild(navItem);
-
-            // Create menu section
-            const section = document.createElement('section');
-            section.id = categorySlug;
-            section.className = 'menu-section';
-            section.setAttribute('data-category', category);
-
-            const sectionTitle = document.createElement('h2');
-            sectionTitle.textContent = category;
-            section.appendChild(sectionTitle);
-
-            // Handle items or subcategories
-            if (Array.isArray(menuData[category])) {
-                menuData[category].forEach(item => {
-                    section.appendChild(createMenuItem(item, category));
-                });
-            } else if (typeof menuData[category] === 'object') {
-                for (const subCategory in menuData[category]) {
-                    const subSectionTitle = document.createElement('h3');
-                    subSectionTitle.textContent = subCategory;
-                    section.appendChild(subSectionTitle);
-                    menuData[category][subCategory].forEach(item => {
-                        section.appendChild(createMenuItem(item, category));
-                    });
-                }
-            }
-
-            // Add category-specific notes
-            const categoryNotes = getCategoryNotes(category);
-            if (categoryNotes) {
-                const notes = document.createElement('div');
-                notes.className = 'section-notes';
-                notes.innerHTML = categoryNotes;
-                section.appendChild(notes);
-            }
-
-            menuContent.appendChild(section);
         }
+
+        // Render first category
+        const firstCategorySlug = createSlug(Object.keys(menuData)[0]);
+        renderCategory(firstCategorySlug);
 
         // Re-bind event listeners after content generation
         bindEventListeners();
@@ -243,10 +298,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setupAnimations();
     };
 
-    // Create individual menu item
+    // Create individual menu item with modal functionality
     const createMenuItem = (item, category) => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'menu-item';
+        itemDiv.style.cursor = 'pointer';
         
         // Add data attributes for search
         itemDiv.dataset.name = item.name.toLowerCase();
@@ -318,7 +374,114 @@ document.addEventListener('DOMContentLoaded', () => {
             itemDiv.appendChild(priceSpan);
         }
 
+        // Add click event for modal
+        itemDiv.addEventListener('click', () => openModal(item, category));
+
         return itemDiv;
+    };
+
+    // Modal functionality
+    const createModal = () => {
+        const modal = document.createElement('div');
+        modal.id = 'item-modal';
+        modal.className = 'modal-overlay hidden';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"></h3>
+                    <button class="modal-close" aria-label="Fechar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-description"></div>
+                    <div class="modal-price"></div>
+                    <div class="modal-options"></div>
+                    <div class="modal-notes"></div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        return modal;
+    };
+
+    const openModal = (item, category) => {
+        let modal = document.getElementById('item-modal');
+        if (!modal) {
+            modal = createModal();
+        }
+
+        // Populate modal content
+        const title = modal.querySelector('.modal-title');
+        const description = modal.querySelector('.modal-description');
+        const price = modal.querySelector('.modal-price');
+        const options = modal.querySelector('.modal-options');
+        const notes = modal.querySelector('.modal-notes');
+
+        title.textContent = item.name;
+        
+        if (item.vegetarian) {
+            const vegIcon = document.createElement('span');
+            vegIcon.className = 'vegetarian-icon';
+            vegIcon.innerHTML = '<i class="fas fa-leaf"></i>';
+            vegIcon.style.marginLeft = '8px';
+            title.appendChild(vegIcon);
+        }
+
+        description.textContent = item.description || '';
+        price.textContent = item.price || '';
+
+        // Handle options
+        options.innerHTML = '';
+        if (item.options) {
+            const optionsTitle = document.createElement('h4');
+            optionsTitle.textContent = 'Opções:';
+            options.appendChild(optionsTitle);
+            
+            item.options.forEach(option => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'modal-option';
+                optionDiv.innerHTML = `
+                    <span class="option-name">${option.name}</span>
+                    <span class="option-description">${option.description}</span>
+                    <span class="option-price">${option.price}</span>
+                `;
+                if (option.vegetarian) {
+                    const vegIcon = document.createElement('span');
+                    vegIcon.className = 'vegetarian-icon';
+                    vegIcon.innerHTML = '<i class="fas fa-leaf"></i>';
+                    optionDiv.appendChild(vegIcon);
+                }
+                options.appendChild(optionDiv);
+            });
+        }
+
+        notes.textContent = item.notes || '';
+
+        // Show modal
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        // Bind close events
+        const closeBtn = modal.querySelector('.modal-close');
+        const overlay = modal;
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.onclick = closeModal;
+        overlay.onclick = (e) => {
+            if (e.target === overlay) closeModal();
+        };
+
+        document.addEventListener('keydown', function escapeHandler(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        });
     };
 
     // Get category-specific notes
@@ -333,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return notes[category] || null;
     };
 
-    // Search functionality
+    // Enhanced search functionality
     const performSearch = () => {
         const searchTerm = searchInput.value.toLowerCase().trim();
         
@@ -348,25 +511,66 @@ document.addEventListener('DOMContentLoaded', () => {
         const results = [];
         
         // Search through all menu items
-        document.querySelectorAll('.menu-item').forEach(item => {
+        allMenuItems.forEach(item => {
             const searchableText = [
-                item.dataset.name || '',
-                item.dataset.description || '',
-                item.dataset.optionName || '',
-                item.dataset.optionDescription || '',
-                item.dataset.category || ''
-            ].join(' ');
+                item.name || '',
+                item.description || '',
+                item.category || '',
+                item.subCategory || ''
+            ].join(' ').toLowerCase();
             
-            if (searchableText.includes(searchTerm)) {
-                const clone = item.cloneNode(true);
-                highlightText(clone, searchTerm);
-                results.push(clone);
+            // Also search in options
+            let optionsText = '';
+            if (item.options) {
+                optionsText = item.options.map(opt => `${opt.name} ${opt.description}`).join(' ').toLowerCase();
+            }
+            
+            if (searchableText.includes(searchTerm) || optionsText.includes(searchTerm)) {
+                results.push(item);
             }
         });
         
         if (results.length > 0) {
             results.forEach(result => {
-                searchResultsList.appendChild(result);
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'search-result-item';
+                resultDiv.style.cursor = 'pointer';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'result-name';
+                nameDiv.innerHTML = highlightSearchTerm(result.name, searchTerm);
+                
+                if (result.vegetarian) {
+                    const vegIcon = document.createElement('span');
+                    vegIcon.className = 'vegetarian-icon';
+                    vegIcon.innerHTML = '<i class="fas fa-leaf"></i>';
+                    vegIcon.style.marginLeft = '8px';
+                    nameDiv.appendChild(vegIcon);
+                }
+                
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'result-category';
+                categoryDiv.textContent = result.subCategory || result.category;
+                
+                const descriptionDiv = document.createElement('div');
+                descriptionDiv.className = 'result-description';
+                if (result.description) {
+                    descriptionDiv.innerHTML = highlightSearchTerm(result.description, searchTerm);
+                }
+                
+                const priceDiv = document.createElement('div');
+                priceDiv.className = 'result-price';
+                priceDiv.textContent = result.price || '';
+                
+                resultDiv.appendChild(nameDiv);
+                resultDiv.appendChild(categoryDiv);
+                if (result.description) resultDiv.appendChild(descriptionDiv);
+                resultDiv.appendChild(priceDiv);
+                
+                // Add click event to open modal
+                resultDiv.addEventListener('click', () => openModal(result, result.category));
+                
+                searchResultsList.appendChild(resultDiv);
             });
             showSearchResults();
         } else {
@@ -376,6 +580,12 @@ document.addEventListener('DOMContentLoaded', () => {
             searchResultsList.appendChild(noResults);
             showSearchResults();
         }
+    };
+
+    const highlightSearchTerm = (text, searchTerm) => {
+        if (!text) return '';
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        return text.replace(regex, '<span class="highlight">$1</span>');
     };
 
     const showSearchResults = () => {
@@ -398,82 +608,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const highlightText = (element, searchTerm) => {
-        const walker = document.createTreeWalker(
-            element,
-            NodeFilter.SHOW_TEXT,
-            { acceptNode: () => NodeFilter.FILTER_ACCEPT },
-            false
-        );
-        
-        const nodesToReplace = [];
-        let currentNode;
-        
-        while (currentNode = walker.nextNode()) {
-            if (currentNode.nodeValue.toLowerCase().includes(searchTerm)) {
-                nodesToReplace.push(currentNode);
-            }
-        }
-        
-        nodesToReplace.forEach(node => {
-            const text = node.nodeValue;
-            const regex = new RegExp(`(${searchTerm})`, 'gi');
-            const newHTML = text.replace(regex, '<span class="highlight">$1</span>');
-            
-            const tempSpan = document.createElement('span');
-            tempSpan.innerHTML = newHTML;
-            
-            if (node.parentNode) {
-                while (tempSpan.firstChild) {
-                    node.parentNode.insertBefore(tempSpan.firstChild, node);
-                }
-                node.parentNode.removeChild(node);
-            }
-        });
-    };
-
     // Navigation functionality
     const setupNavigation = () => {
         // Smooth scrolling for nav links
         const navLinks = document.querySelectorAll('#menu-nav ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
                 // Remove active class from all links
                 navLinks.forEach(l => l.classList.remove('active'));
                 // Add active class to clicked link
                 e.target.classList.add('active');
+                
+                // Render the selected category
+                const categorySlug = e.target.getAttribute('data-category');
+                renderCategory(categorySlug);
+                
+                // Scroll to top of content
+                menuContent.scrollIntoView({ behavior: 'smooth' });
             });
         });
-
-        // Intersection Observer for active nav highlighting
-        const sections = document.querySelectorAll('.menu-section');
-        const observerOptions = {
-            root: null,
-            rootMargin: '-50% 0px -50% 0px',
-            threshold: 0
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href').substring(1) === entry.target.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Set first nav link as active initially
-        if (navLinks.length > 0) {
-            navLinks[0].classList.add('active');
-        }
     };
 
     // Animation setup
