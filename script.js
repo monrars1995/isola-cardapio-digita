@@ -48,16 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Pesce all' Acqua Pazza", description: "Filé de peixe cozinhado no Chardonnay, com tomate fresco, azeitonas e alcaparras, acompanhado de batatas com ervas finas", price: "R$99" },
             { name: "Tonno Scottato con Cuscuz Mediterraneo", description: "Filé de atum celado, acompanhado de cuscuz Mediterrâneo", price: "R$89" }
         ],
-        "Contorni - Acompanhamentos": [
-            { name: "Legumes Grelhados", price: "R$25", vegetarian: true },
-            { name: "Batata Rústica", price: "R$25", vegetarian: true },
-            { name: "Purê de Batata", price: "R$25", vegetarian: true },
-            { name: "Brócolis Salteado", price: "R$25", vegetarian: true }
-        ],
-        "Menu Bambini - Menu Infantil": [
-            { name: "Spaghetti al Sugo o Burro", price: "R$39", vegetarian: true },
-            { name: "Filetto Grelhado com Batata Frita", price: "R$49" }
-        ],
         "Pizze": [
             { name: "Margherita", description: "Molho de tomate, mozzarella de búfala e manjericão", price: "R$52", vegetarian: true },
             { name: "Calabrese", description: "Molho de tomate, mozzarella, linguiça calabresa artesanal e cebola roxa", price: "R$59" },
