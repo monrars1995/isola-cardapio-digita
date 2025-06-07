@@ -141,7 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const showAbout = () => {
-        // For now, just show the menu - could be expanded to show an about modal
+        // For now, just show the menu - this function is a point of extension for future implementations
+        // Could be expanded to show an about modal or navigate to a dedicated section
         showMenu();
     };
 
@@ -238,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Re-bind event listeners after content generation
         bindEventListeners();
+        setupNavigation();
+        setupAnimations();
     };
 
     // Create individual menu item
