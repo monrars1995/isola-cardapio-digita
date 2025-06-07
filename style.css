@@ -1106,35 +1106,6 @@ footer {
     }
 }
 
-/* Print Styles */
-@media print {
-    .welcome-screen,
-    header,
-    nav,
-    .search-results-container,
-    #back-to-top,
-    footer {
-        display: none !important;
-    }
-    
-    .menu-app {
-        padding-top: 0;
-        background: white;
-        color: black;
-    }
-    
-    .menu-section {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ccc;
-        margin-bottom: var(--space-6);
-    }
-    
-    .menu-item {
-        break-inside: avoid;
-    }
-}
-
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
     :root {
