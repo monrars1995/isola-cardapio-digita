@@ -1,23 +1,25 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Define menu data structure (based on menu_structure.md)
+    // Enhanced menu data structure with better organization
     const menuData = {
         "Antipasti - Entradas": [
-            { name: "Le Bruschette (2 un)", options: [
-                { name: "Parma & Brie", description: "parma, brie, mel e nozes", price: "R$42" },
-                { name: "Parmigiano", description: "tomate, manjericão, oregano, parmesão", price: "R$32" },
-                { name: "Funghi e Provola", description: "mix de cogumelos saltados e provolone", price: "R$39" }
-            ]},
+            { 
+                name: "Le Bruschette (2 un)", 
+                options: [
+                    { name: "Parma & Brie", description: "parma, brie, mel e nozes", price: "R$42" },
+                    { name: "Parmigiano", description: "tomate, manjericão, oregano, parmesão", price: "R$32", vegetarian: true },
+                    { name: "Funghi e Provola", description: "mix de cogumelos saltados e provolone", price: "R$39", vegetarian: true }
+                ]
+            },
             { name: "Tartare di Tonno (80g)", description: "Picadinho de atum fresco, manga e aromas cítricos", price: "R$59" },
             { name: "Polpo alla Gallurese (80g)", description: "Saladinha de polvo com batatas e tomatinhos", price: "R$69" },
             { name: "Guazzetto del Golfo (1 dúzia)", description: "Misto de mariscos frescos na concha em molho de tomate levemente picante", price: "R$59" },
             { name: "Tagliere Antipasto Misto Terra", description: "Queijos e embutidos artesanais típicos italianos", price: "R$79" },
             { name: "Seppiette Grigliate al Limone (150g)", description: "Lula grelhada, pesto de rúcula, pimenta do reino & zest de limão", price: "R$52" },
-            { name: "Pai e Casu", description: "Queijo meia cura grelhado, derretido sobre pão artesanal, mel orgânico e nozes", price: "R$59" },
+            { name: "Pai e Casu", description: "Queijo meia cura grelhado, derretido sobre pão artesanal, mel orgânico e nozes", price: "R$59", vegetarian: true },
             { name: "Burratina (60g)", description: "Com presunto de parma e molho pesto de manjericão", price: "R$52", notes: "usamos apenas burratas frescas, conferir disponibilidade." },
             { name: "Carpaccio di Pesce Marinato", description: "Carpaccio de peixe marinado", price: "R$52" },
             { name: "Fritto Misto", description: "Fritura de misto de frutos do mar", price: "R$79" },
-            { name: "Porção adicional de pão", description: "Pão artesanal produzido no restaurante", price: "R$18" }
+            { name: "Porção adicional de pão", description: "Pão artesanal produzido no restaurante", price: "R$18", vegetarian: true }
         ],
         "Insalate - Saladas": [
             { name: "Insalata Mediterrânea", description: "Folhas mistas orgânicas com camarão refogado no suco de laranja", price: "R$59" },
@@ -48,13 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Cotoletta alla Milanese", description: "Costeleta de porco empanada e frita, acompanha salada de rúcula e tomate cereja", price: "R$79" }
         ],
         "Contorni - Acompanhamentos": [
-            { name: "Legumes Grelhados", price: "R$25" },
-            { name: "Batata Rústica", price: "R$25" },
-            { name: "Purê de Batata", price: "R$25" },
-            { name: "Brócolis Salteado", price: "R$25" }
+            { name: "Legumes Grelhados", price: "R$25", vegetarian: true },
+            { name: "Batata Rústica", price: "R$25", vegetarian: true },
+            { name: "Purê de Batata", price: "R$25", vegetarian: true },
+            { name: "Brócolis Salteado", price: "R$25", vegetarian: true }
         ],
         "Menu Bambini - Menu Infantil": [
-            { name: "Spaghetti al Sugo o Burro", price: "R$39" },
+            { name: "Spaghetti al Sugo o Burro", price: "R$39", vegetarian: true },
             { name: "Filetto Grelhado com Batata Frita", price: "R$49" }
         ],
         "Pizze": [
@@ -68,149 +70,176 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Isola Speciale", description: "Molho de tomate, mozzarella de búfala, tomate cereja confit, presunto de Parma, rúcula e pesto", price: "R$89" }
         ],
         "Dolci - Sobremesas": [
-            { name: "Tiramisù Classico", description: "Creme de mascarpone, biscoito savoiardi embebido em café e cacau em pó", price: "R$35" },
-            { name: "Panna Cotta com Frutas Vermelhas", description: "Flan de creme de leite com calda de frutas vermelhas frescas", price: "R$32" },
-            { name: "Cannoli Siciliani (2 un)", description: "Massa crocante recheada com creme de ricota doce, frutas cristalizadas e pistache", price: "R$38" },
-            { name: "Torta Caprese", description: "Torta de chocolate e amêndoas sem farinha, servida com sorvete de creme", price: "R$36" },
-            { name: "Gelato Artigianale (bola)", description: "Sabores: Pistache, Chocolate Belga, Creme, Limão Siciliano", price: "R$18" }
+            { name: "Tiramisù Classico", description: "Creme de mascarpone, biscoito savoiardi embebido em café e cacau em pó", price: "R$35", vegetarian: true },
+            { name: "Panna Cotta com Frutas Vermelhas", description: "Flan de creme de leite com calda de frutas vermelhas frescas", price: "R$32", vegetarian: true },
+            { name: "Cannoli Siciliani (2 un)", description: "Massa crocante recheada com creme de ricota doce, frutas cristalizadas e pistache", price: "R$38", vegetarian: true },
+            { name: "Torta Caprese", description: "Torta de chocolate e amêndoas sem farinha, servida com sorvete de creme", price: "R$36", vegetarian: true },
+            { name: "Gelato Artigianale (bola)", description: "Sabores: Pistache, Chocolate Belga, Creme, Limão Siciliano", price: "R$18", vegetarian: true }
         ],
         "Bevande - Bebidas": [
-            { name: "Acqua Minerale (com/sem gás) 300ml", price: "R$8" },
-            { name: "Refrigerantes (Lata)", description: "Coca-Cola, Coca-Cola Zero, Guaraná Antarctica, Guaraná Zero, Sprite", price: "R$9" },
-            { name: "Sucos Naturais", description: "Laranja, Limão, Abacaxi com Hortelã, Melancia", price: "R$12" },
-            { name: "Cervejas Long Neck", description: "Heineken, Stella Artois, Corona", price: "R$15" },
-            { name: "Café Espresso", price: "R$7" },
-            { name: "Café com Leite", price: "R$9" },
-            { name: "Chás (quente/gelado)", price: "R$8" }
+            { name: "Acqua Minerale (com/sem gás) 300ml", price: "R$8", vegetarian: true },
+            { name: "Refrigerantes (Lata)", description: "Coca-Cola, Coca-Cola Zero, Guaraná Antarctica, Guaraná Zero, Sprite", price: "R$9", vegetarian: true },
+            { name: "Sucos Naturais", description: "Laranja, Limão, Abacaxi com Hortelã, Melancia", price: "R$12", vegetarian: true },
+            { name: "Cervejas Long Neck", description: "Heineken, Stella Artois, Corona", price: "R$15", vegetarian: true },
+            { name: "Café Espresso", price: "R$7", vegetarian: true },
+            { name: "Café com Leite", price: "R$9", vegetarian: true },
+            { name: "Chás (quente/gelado)", price: "R$8", vegetarian: true }
         ],
         "Carta dei Vini": {
             "Vinhos Tintos": [
-                { name: "Chianti Classico DOCG (Toscana, Itália)", price: "Garrafa R$180 / Taça R$45" },
-                { name: "Barolo DOCG (Piemonte, Itália)", price: "Garrafa R$450" },
-                { name: "Nero d'Avola IGT (Sicília, Itália)", price: "Garrafa R$150 / Taça R$40" },
-                { name: "Malbec Reserva (Mendoza, Argentina)", price: "Garrafa R$160 / Taça R$42" },
-                { name: "Cabernet Sauvignon Gran Reserva (Valle Central, Chile)", price: "Garrafa R$170" }
+                { name: "Chianti Classico DOCG (Toscana, Itália)", price: "Garrafa R$180 / Taça R$45", vegetarian: true },
+                { name: "Barolo DOCG (Piemonte, Itália)", price: "Garrafa R$450", vegetarian: true },
+                { name: "Nero d'Avola IGT (Sicília, Itália)", price: "Garrafa R$150 / Taça R$40", vegetarian: true },
+                { name: "Malbec Reserva (Mendoza, Argentina)", price: "Garrafa R$160 / Taça R$42", vegetarian: true },
+                { name: "Cabernet Sauvignon Gran Reserva (Valle Central, Chile)", price: "Garrafa R$170", vegetarian: true }
             ],
             "Vinhos Brancos": [
-                { name: "Pinot Grigio DOC (Veneto, Itália)", price: "Garrafa R$140 / Taça R$38" },
-                { name: "Vermentino di Sardegna DOC (Sardenha, Itália)", price: "Garrafa R$165" },
-                { name: "Sauvignon Blanc (Loire, França)", price: "Garrafa R$190 / Taça R$48" },
-                { name: "Chardonnay (Califórnia, EUA)", price: "Garrafa R$175" }
+                { name: "Pinot Grigio DOC (Veneto, Itália)", price: "Garrafa R$140 / Taça R$38", vegetarian: true },
+                { name: "Vermentino di Sardegna DOC (Sardenha, Itália)", price: "Garrafa R$165", vegetarian: true },
+                { name: "Sauvignon Blanc (Loire, França)", price: "Garrafa R$190 / Taça R$48", vegetarian: true },
+                { name: "Chardonnay (Califórnia, EUA)", price: "Garrafa R$175", vegetarian: true }
             ],
             "Vinhos Rosés": [
-                { name: "Rosato Salento IGT (Puglia, Itália)", price: "Garrafa R$130 / Taça R$35" },
-                { name: "Provence Rosé AOP (Provence, França)", price: "Garrafa R$210" }
+                { name: "Rosato Salento IGT (Puglia, Itália)", price: "Garrafa R$130 / Taça R$35", vegetarian: true },
+                { name: "Provence Rosé AOP (Provence, França)", price: "Garrafa R$210", vegetarian: true }
             ],
             "Espumantes": [
-                { name: "Prosecco DOC Treviso Brut (Veneto, Itália)", price: "Garrafa R$150 / Taça R$40" },
-                { name: "Champagne Brut (Champagne, França)", price: "Garrafa R$550" }
+                { name: "Prosecco DOC Treviso Brut (Veneto, Itália)", price: "Garrafa R$150 / Taça R$40", vegetarian: true },
+                { name: "Champagne Brut (Champagne, França)", price: "Garrafa R$550", vegetarian: true }
             ]
         }
     };
 
+    // DOM elements
     const navList = document.querySelector('#menu-nav ul');
     const menuContent = document.getElementById('menu-content');
+    const searchInput = document.getElementById('menu-search');
+    const searchButton = document.getElementById('search-button');
+    const searchClear = document.getElementById('search-clear');
+    const searchResults = document.getElementById('search-results');
+    const searchResultsList = document.querySelector('.search-results-list');
+    const closeSearchBtn = document.getElementById('close-search');
+    const backToTopBtn = document.getElementById('back-to-top');
 
-    // Function to create slug for ID
+    // Utility functions
     const createSlug = (text) => {
         return text.toString().toLowerCase()
-            .replace(/\s+/g, '-')           // Replace spaces with -
-            .replace(/[àáâãäå]/g, 'a')    // Replace accented 'a'
-            .replace(/[èéêë]/g, 'e')    // Replace accented 'e'
-            .replace(/[ìíîï]/g, 'i')    // Replace accented 'i'
-            .replace(/[òóôõö]/g, 'o')    // Replace accented 'o'
-            .replace(/[ùúûü]/g, 'u')    // Replace accented 'u'
-            .replace(/ç/g, 'c')         // Replace ç
-            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-            .replace(/^-+/, '')             // Trim - from start of text
-            .replace(/-+$/, '');            // Trim - from end of text
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/[^\w\-]+/g, '')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, '');
     };
 
-    // Generate Navigation and Content
-    for (const category in menuData) {
-        const categorySlug = createSlug(category);
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
 
-        // Create Nav Link
-        const navItem = document.createElement('li');
-        const navLink = document.createElement('a');
-        navLink.textContent = category.split(' - ')[0]; // Use shorter name for nav if available
-        navLink.href = `#${categorySlug}`;
-        navItem.appendChild(navLink);
-        navList.appendChild(navItem);
+    // Generate navigation and content
+    const generateMenu = () => {
+        // Clear existing content
+        navList.innerHTML = '';
+        menuContent.innerHTML = '';
 
-        // Create Menu Section
-        const section = document.createElement('section');
-        section.id = categorySlug;
-        section.classList.add('menu-section');
+        // Add search results container
+        const searchContainer = document.createElement('div');
+        searchContainer.id = 'search-results';
+        searchContainer.className = 'search-results-container hidden';
+        searchContainer.innerHTML = `
+            <h2>Resultados da Busca <button id="close-search" aria-label="Fechar resultados"><i class="fas fa-times"></i></button></h2>
+            <div class="search-results-list"></div>
+        `;
+        menuContent.appendChild(searchContainer);
 
-        const sectionTitle = document.createElement('h2');
-        sectionTitle.textContent = category;
-        section.appendChild(sectionTitle);
+        // Generate menu sections
+        for (const category in menuData) {
+            const categorySlug = createSlug(category);
 
-        // Handle items or subcategories
-        if (Array.isArray(menuData[category])) {
-            // It's an array of items
-            menuData[category].forEach(item => {
-                section.appendChild(createMenuItem(item));
-            });
-        } else if (typeof menuData[category] === 'object') {
-            // It's an object with subcategories (like Vinhos)
-            for (const subCategory in menuData[category]) {
-                const subSectionTitle = document.createElement('h3');
-                subSectionTitle.textContent = subCategory;
-                section.appendChild(subSectionTitle);
-                menuData[category][subCategory].forEach(item => {
-                    section.appendChild(createMenuItem(item));
+            // Create navigation link
+            const navItem = document.createElement('li');
+            const navLink = document.createElement('a');
+            navLink.textContent = category.split(' - ')[0];
+            navLink.href = `#${categorySlug}`;
+            navLink.setAttribute('data-category', categorySlug);
+            navItem.appendChild(navLink);
+            navList.appendChild(navItem);
+
+            // Create menu section
+            const section = document.createElement('section');
+            section.id = categorySlug;
+            section.className = 'menu-section';
+            section.setAttribute('data-category', category);
+
+            const sectionTitle = document.createElement('h2');
+            sectionTitle.textContent = category;
+            section.appendChild(sectionTitle);
+
+            // Handle items or subcategories
+            if (Array.isArray(menuData[category])) {
+                menuData[category].forEach(item => {
+                    section.appendChild(createMenuItem(item, category));
                 });
+            } else if (typeof menuData[category] === 'object') {
+                for (const subCategory in menuData[category]) {
+                    const subSectionTitle = document.createElement('h3');
+                    subSectionTitle.textContent = subCategory;
+                    section.appendChild(subSectionTitle);
+                    menuData[category][subCategory].forEach(item => {
+                        section.appendChild(createMenuItem(item, category));
+                    });
+                }
             }
+
+            // Add category-specific notes
+            const categoryNotes = getCategoryNotes(category);
+            if (categoryNotes) {
+                const notes = document.createElement('div');
+                notes.className = 'section-notes';
+                notes.innerHTML = categoryNotes;
+                section.appendChild(notes);
+            }
+
+            menuContent.appendChild(section);
         }
 
-        // Add specific notes if they exist for the category
-        if (category === "Paste & Risotti") {
-            const notes = document.createElement('p');
-            notes.classList.add('section-notes');
-            notes.textContent = "Notas: Os pratos podem conter alergênicos, pimenta e cheiro verde. Temos também massa integral e sem glúten.";
-            section.appendChild(notes);
-        }
-        if (category === "Pizze") {
-            const notes = document.createElement('p');
-            notes.classList.add('section-notes');
-            notes.textContent = "Notas: Adicional de Burrata na Pizza - R$25. Massa com fermentação natural. Opção de massa integral disponível.";
-            section.appendChild(notes);
-        }
-         if (category === "Carta dei Vini") {
-            const notes = document.createElement('p');
-            notes.classList.add('section-notes');
-            notes.textContent = "Nota: Rolha (Traga seu vinho) - R$50";
-            section.appendChild(notes);
-        }
+        // Re-bind event listeners after content generation
+        bindEventListeners();
+    };
 
-        menuContent.appendChild(section);
-    }
-
-    // Function to create a single menu item element
-    function createMenuItem(item) {
+    // Create individual menu item
+    const createMenuItem = (item, category) => {
         const itemDiv = document.createElement('div');
-        itemDiv.classList.add('menu-item');
+        itemDiv.className = 'menu-item';
         
-        // Data attributes para facilitar a pesquisa
+        // Add data attributes for search
         itemDiv.dataset.name = item.name.toLowerCase();
+        itemDiv.dataset.category = category.toLowerCase();
         if (item.description) {
             itemDiv.dataset.description = item.description.toLowerCase();
         }
 
         const detailsDiv = document.createElement('div');
-        detailsDiv.classList.add('item-details');
+        detailsDiv.className = 'item-details';
 
-        const nameSpan = document.createElement('span');
-        nameSpan.classList.add('item-name');
+        const nameSpan = document.createElement('div');
+        nameSpan.className = 'item-name';
         nameSpan.textContent = item.name;
         
-        // Adicionar ícone caso seja vegetariano
+        // Add vegetarian icon
         if (item.vegetarian) {
-            const vegetarianIcon = document.createElement('i');
-            vegetarianIcon.className = 'fas fa-leaf vegetarian-icon';
+            const vegetarianIcon = document.createElement('span');
+            vegetarianIcon.className = 'vegetarian-icon';
+            vegetarianIcon.innerHTML = '<i class="fas fa-leaf"></i>';
             vegetarianIcon.title = 'Opção vegetariana';
             vegetarianIcon.setAttribute('aria-label', 'Opção vegetariana');
             nameSpan.appendChild(vegetarianIcon);
@@ -219,29 +248,36 @@ document.addEventListener('DOMContentLoaded', () => {
         detailsDiv.appendChild(nameSpan);
 
         if (item.description) {
-            const descriptionSpan = document.createElement('span');
-            descriptionSpan.classList.add('item-description');
-            descriptionSpan.textContent = item.description;
-            detailsDiv.appendChild(descriptionSpan);
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.className = 'item-description';
+            descriptionDiv.textContent = item.description;
+            detailsDiv.appendChild(descriptionDiv);
         }
 
         if (item.notes) {
-            const notesSpan = document.createElement('span');
-            notesSpan.classList.add('item-notes');
-            notesSpan.textContent = item.notes;
-            detailsDiv.appendChild(notesSpan);
+            const notesDiv = document.createElement('div');
+            notesDiv.className = 'item-notes';
+            notesDiv.textContent = item.notes;
+            detailsDiv.appendChild(notesDiv);
         }
 
         // Handle options (like Bruschette)
         if (item.options) {
             const optionsDiv = document.createElement('div');
-            optionsDiv.classList.add('item-options');
+            optionsDiv.className = 'item-options';
             item.options.forEach(option => {
-                const optionSpan = document.createElement('span');
-                optionSpan.innerHTML = `&nbsp;&nbsp;- ${option.name} (${option.description}) - <strong>${option.price}</strong>`;
-                optionsDiv.appendChild(optionSpan);
+                const optionDiv = document.createElement('div');
+                optionDiv.innerHTML = `${option.name} (${option.description}) - <strong>${option.price}</strong>`;
+                if (option.vegetarian) {
+                    const vegIcon = document.createElement('span');
+                    vegIcon.className = 'vegetarian-icon';
+                    vegIcon.innerHTML = '<i class="fas fa-leaf"></i>';
+                    vegIcon.style.marginLeft = '8px';
+                    optionDiv.appendChild(vegIcon);
+                }
+                optionsDiv.appendChild(optionDiv);
                 
-                // Adicionar dados para pesquisa
+                // Add search data
                 itemDiv.dataset.optionName = (itemDiv.dataset.optionName || '') + ' ' + option.name.toLowerCase();
                 itemDiv.dataset.optionDescription = (itemDiv.dataset.optionDescription || '') + ' ' + option.description.toLowerCase();
             });
@@ -249,134 +285,52 @@ document.addEventListener('DOMContentLoaded', () => {
             itemDiv.appendChild(detailsDiv);
         } else {
             itemDiv.appendChild(detailsDiv);
-            const priceSpan = document.createElement('span');
-            priceSpan.classList.add('item-price');
+            const priceSpan = document.createElement('div');
+            priceSpan.className = 'item-price';
             priceSpan.textContent = item.price;
             itemDiv.appendChild(priceSpan);
         }
 
         return itemDiv;
-    }
-
-    // Animate sections on scroll
-    const sectionsToAnimate = document.querySelectorAll('.menu-section');
-
-    if ('IntersectionObserver' in window) {
-        const sectionObserverOptions = {
-            root: null, // relative to document viewport 
-            rootMargin: '0px',
-            threshold: 0.1 // 10% of item is visible
-        };
-
-        const sectionObserverCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.remove('section-hidden');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const sectionObserver = new IntersectionObserver(sectionObserverCallback, sectionObserverOptions);
-
-        sectionsToAnimate.forEach(section => {
-            section.classList.add('section-hidden');
-            sectionObserver.observe(section);
-        });
-    } else {
-        // Fallback for browsers that don't support IntersectionObserver
-        sectionsToAnimate.forEach(section => {
-            section.classList.remove('section-hidden');
-        });
-    }
-
-    // Smooth scrolling for nav links
-    const navLinks = document.querySelectorAll('#menu-nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Add active class to the clicked link
-            e.target.classList.add('active');
-
-            // Smooth scroll is handled by CSS `scroll-behavior: smooth;`
-            // We just need to make sure the link's default behavior (jumping) happens
-            // If CSS scroll-behavior is not supported, uncomment below:
-            /*
-            e.preventDefault();
-            const targetId = e.target.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-            */
-        });
-    });
-
-    // Highlight nav link on scroll
-    const sections = document.querySelectorAll('.menu-section');
-    const observerOptions = {
-        root: null, // relative to document viewport
-        rootMargin: '-50% 0px -50% 0px', // trigger when section is in the middle 50% of the viewport
-        threshold: 0
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === entry.target.id) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, observerOptions);
+    // Get category-specific notes
+    const getCategoryNotes = (category) => {
+        const notes = {
+            "Paste & Risotti": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Temos também massa integral e sem glúten.",
+            "Pizze": "Adicional de Burrata na Pizza - R$25. Massa com fermentação natural. Opção de massa integral disponível.",
+            "Carta dei Vini": "Rolha (Traga seu vinho) - R$50"
+        };
+        return notes[category] || null;
+    };
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Set the first nav link as active initially
-    if (navLinks.length > 0) {
-        navLinks[0].classList.add('active');
-    }
-
-    // Sistema de Busca
-    const searchInput = document.getElementById('menu-search');
-    const searchButton = document.getElementById('search-button');
-    const searchClear = document.getElementById('search-clear');
-    const searchResults = document.getElementById('search-results');
-    const searchResultsList = document.querySelector('.search-results-list');
-    const closeSearchBtn = document.getElementById('close-search');
-    
-    // Implementar busca
-    function performSearch() {
+    // Search functionality
+    const performSearch = () => {
         const searchTerm = searchInput.value.toLowerCase().trim();
         
-        if (searchTerm.length < 2) return;
+        if (searchTerm.length < 2) {
+            clearSearch();
+            return;
+        }
         
         searchClear.style.display = 'inline-block';
+        const searchResultsList = document.querySelector('.search-results-list');
         searchResultsList.innerHTML = '';
         const results = [];
         
-        // Buscar em todos os itens do menu
+        // Search through all menu items
         document.querySelectorAll('.menu-item').forEach(item => {
-            const itemName = item.dataset.name || '';
-            const itemDescription = item.dataset.description || '';
-            const optionNames = item.dataset.optionName || '';
-            const optionDescriptions = item.dataset.optionDescription || '';
-            
-            const searchableText = `${itemName} ${itemDescription} ${optionNames} ${optionDescriptions}`;
+            const searchableText = [
+                item.dataset.name || '',
+                item.dataset.description || '',
+                item.dataset.optionName || '',
+                item.dataset.optionDescription || '',
+                item.dataset.category || ''
+            ].join(' ');
             
             if (searchableText.includes(searchTerm)) {
-                // Clone do item para resultados
                 const clone = item.cloneNode(true);
-                
-                // Destacar termos de pesquisa
                 highlightText(clone, searchTerm);
-                
                 results.push(clone);
             }
         });
@@ -385,30 +339,37 @@ document.addEventListener('DOMContentLoaded', () => {
             results.forEach(result => {
                 searchResultsList.appendChild(result);
             });
-            
-            searchResults.classList.remove('hidden');
-            document.querySelectorAll('.menu-section').forEach(section => {
-                section.style.display = 'none';
-            });
+            showSearchResults();
         } else {
-            const noResults = document.createElement('p');
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
             noResults.textContent = 'Nenhum resultado encontrado para sua busca.';
-            noResults.classList.add('no-results');
             searchResultsList.appendChild(noResults);
-            
-            searchResults.classList.remove('hidden');
-            document.querySelectorAll('.menu-section').forEach(section => {
-                section.style.display = 'none';
-            });
+            showSearchResults();
         }
-    }
-    
-    // Função para destacar texto nos resultados
-    function highlightText(element, searchTerm) {
+    };
+
+    const showSearchResults = () => {
+        searchResults.classList.remove('hidden');
+        document.querySelectorAll('.menu-section').forEach(section => {
+            section.style.display = 'none';
+        });
+    };
+
+    const clearSearch = () => {
+        searchInput.value = '';
+        searchClear.style.display = 'none';
+        searchResults.classList.add('hidden');
+        document.querySelectorAll('.menu-section').forEach(section => {
+            section.style.display = 'block';
+        });
+    };
+
+    const highlightText = (element, searchTerm) => {
         const walker = document.createTreeWalker(
             element,
             NodeFilter.SHOW_TEXT,
-            { acceptNode: node => NodeFilter.FILTER_ACCEPT },
+            { acceptNode: () => NodeFilter.FILTER_ACCEPT },
             false
         );
         
@@ -423,8 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         nodesToReplace.forEach(node => {
             const text = node.nodeValue;
-            const regex = new RegExp(searchTerm, 'gi');
-            const newHTML = text.replace(regex, match => `<span class="highlight">${match}</span>`);
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            const newHTML = text.replace(regex, '<span class="highlight">$1</span>');
             
             const tempSpan = document.createElement('span');
             tempSpan.innerHTML = newHTML;
@@ -436,55 +397,213 @@ document.addEventListener('DOMContentLoaded', () => {
                 node.parentNode.removeChild(node);
             }
         });
-    }
-    
-    // Limpar busca
-    function clearSearch() {
-        searchInput.value = '';
-        searchClear.style.display = 'none';
-        searchResults.classList.add('hidden');
-        document.querySelectorAll('.menu-section').forEach(section => {
-            section.style.display = 'block';
+    };
+
+    // Navigation functionality
+    const setupNavigation = () => {
+        // Smooth scrolling for nav links
+        const navLinks = document.querySelectorAll('#menu-nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                e.target.classList.add('active');
+            });
         });
-    }
-    
-    // Event listeners para busca
-    searchInput.addEventListener('input', () => {
-        if (searchInput.value.trim().length > 0) {
-            searchClear.style.display = 'inline-block';
-        } else {
-            searchClear.style.display = 'none';
-        }
-    });
-    
-    searchInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            performSearch();
-        } else if (e.key === 'Escape') {
-            clearSearch();
-        }
-    });
-    
-    searchButton.addEventListener('click', performSearch);
-    searchClear.addEventListener('click', clearSearch);
-    closeSearchBtn.addEventListener('click', clearSearch);
-    
-    // Botão de voltar ao topo
-    const backToTopBtn = document.getElementById('back-to-top');
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-    
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+
+        // Intersection Observer for active nav highlighting
+        const sections = document.querySelectorAll('.menu-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
-    });
-    
+
+        // Set first nav link as active initially
+        if (navLinks.length > 0) {
+            navLinks[0].classList.add('active');
+        }
+    };
+
+    // Animation setup
+    const setupAnimations = () => {
+        const sectionsToAnimate = document.querySelectorAll('.menu-section');
+
+        if ('IntersectionObserver' in window) {
+            const animationObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('section-hidden');
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            }, animationObserverOptions);
+
+            sectionsToAnimate.forEach(section => {
+                section.classList.add('section-hidden');
+                animationObserver.observe(section);
+            });
+        } else {
+            sectionsToAnimate.forEach(section => {
+                section.classList.remove('section-hidden');
+            });
+        }
+    };
+
+    // Back to top functionality
+    const setupBackToTop = () => {
+        window.addEventListener('scroll', debounce(() => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, 100));
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    };
+
+    // Bind all event listeners
+    const bindEventListeners = () => {
+        // Search functionality
+        const debouncedSearch = debounce(performSearch, 300);
+        
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.trim().length > 0) {
+                searchClear.style.display = 'inline-block';
+            } else {
+                searchClear.style.display = 'none';
+                clearSearch();
+            }
+        });
+        
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            } else if (e.key === 'Escape') {
+                clearSearch();
+            } else {
+                debouncedSearch();
+            }
+        });
+        
+        searchButton.addEventListener('click', performSearch);
+        searchClear.addEventListener('click', clearSearch);
+        
+        // Re-bind close search button
+        const newCloseSearchBtn = document.getElementById('close-search');
+        if (newCloseSearchBtn) {
+            newCloseSearchBtn.addEventListener('click', clearSearch);
+        }
+    };
+
+    // Accessibility improvements
+    const setupAccessibility = () => {
+        // Add keyboard navigation for menu items
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                // Ensure proper tab order
+                const focusableElements = document.querySelectorAll(
+                    'a, button, input, [tabindex]:not([tabindex="-1"])'
+                );
+                // Handle tab navigation if needed
+            }
+        });
+
+        // Add ARIA labels where needed
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach((item, index) => {
+            item.setAttribute('role', 'article');
+            item.setAttribute('aria-label', `Menu item ${index + 1}`);
+        });
+    };
+
+    // Performance optimizations
+    const setupPerformanceOptimizations = () => {
+        // Lazy load images if any are added in the future
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    };
+
+    // Error handling
+    const setupErrorHandling = () => {
+        window.addEventListener('error', (e) => {
+            console.error('Application error:', e.error);
+            // Could show user-friendly error message here
+        });
+
+        // Handle network errors for future API calls
+        window.addEventListener('online', () => {
+            console.log('Connection restored');
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('Connection lost');
+        });
+    };
+
+    // Initialize application
+    const init = () => {
+        try {
+            generateMenu();
+            setupNavigation();
+            setupAnimations();
+            setupBackToTop();
+            setupAccessibility();
+            setupPerformanceOptimizations();
+            setupErrorHandling();
+            
+            console.log('Cardápio Digital Isola initialized successfully');
+        } catch (error) {
+            console.error('Failed to initialize application:', error);
+        }
+    };
+
+    // Start the application
+    init();
 });
