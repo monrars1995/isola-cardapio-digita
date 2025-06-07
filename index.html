@@ -53,94 +53,140 @@
     </script>
 </head>
 <body>
-    <header role="banner">
-        <div class="header-content">
-            <h1>Isola - Cardápio Digital</h1>
-            <div class="search-container" role="search">
-                <input 
-                    type="text" 
-                    id="menu-search" 
-                    placeholder="Buscar no cardápio..." 
-                    aria-label="Buscar pratos no cardápio"
-                    autocomplete="off"
-                    spellcheck="false"
-                >
-                <button id="search-clear" aria-label="Limpar busca" type="button">
-                    <i class="fas fa-times" aria-hidden="true"></i>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-logo">
+                <h1>Isola</h1>
+                <div class="logo-subtitle">Cucina Italiana</div>
+            </div>
+            
+            <div class="welcome-description">
+                <p>O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade.</p>
+            </div>
+            
+            <div class="welcome-buttons">
+                <button id="enter-menu" class="welcome-btn primary">
+                    <i class="fas fa-utensils"></i>
+                    Ver Cardápio
                 </button>
-                <button id="search-button" aria-label="Buscar" type="button">
-                    <i class="fas fa-search" aria-hidden="true"></i>
+                <button id="about-restaurant" class="welcome-btn secondary">
+                    <i class="fas fa-info-circle"></i>
+                    Sobre o Restaurante
                 </button>
             </div>
+            
+            <div class="welcome-info">
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Todos os pratos são feitos na hora</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-chef-hat"></i>
+                    <span>Produtos artesanais de nossa produção</span>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <div class="menu-legend" role="complementary" aria-label="Legenda do cardápio">
-        <span class="legend-item">
-            <i class="fas fa-leaf" aria-hidden="true"></i> 
-            <span>Vegetariano</span>
-        </span>
-        <span class="legend-item">
-            <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
-            <span>Harmonização</span>
-        </span>
+        
+        <div class="welcome-background">
+            <div class="bg-pattern"></div>
+        </div>
     </div>
 
-    <nav id="menu-nav" role="navigation" aria-label="Navegação do cardápio">
-        <ul role="menubar">
-            <!-- Category links will be generated here by JS -->
-        </ul>
-    </nav>
-
-    <main id="menu-content" role="main">
-        <!-- Menu sections will be generated here -->
-        <noscript>
-            <div class="noscript-message">
-                <h2>JavaScript Necessário</h2>
-                <p>Este cardápio digital requer JavaScript para funcionar corretamente. Por favor, habilite o JavaScript em seu navegador para visualizar o cardápio completo.</p>
+    <!-- Menu Application -->
+    <div id="menu-app" class="menu-app hidden">
+        <header role="banner">
+            <div class="header-content">
+                <h1>Isola - Cardápio Digital</h1>
+                <div class="search-container" role="search">
+                    <input 
+                        type="text" 
+                        id="menu-search" 
+                        placeholder="Buscar no cardápio..." 
+                        aria-label="Buscar pratos no cardápio"
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                    <button id="search-clear" aria-label="Limpar busca" type="button">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                    <button id="search-button" aria-label="Buscar" type="button">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <button id="back-to-welcome" class="back-btn" aria-label="Voltar ao início">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
             </div>
-        </noscript>
-    </main>
+        </header>
 
-    <button 
-        id="back-to-top" 
-        aria-label="Voltar ao topo da página" 
-        title="Voltar ao topo"
-        type="button"
-    >
-        <i class="fas fa-chevron-up" aria-hidden="true"></i>
-    </button>
-
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-info">
-                <p>
-                    <i class="fas fa-info-circle" aria-hidden="true"></i> 
-                    Os pratos podem conter alergênicos, pimenta e cheiro verde.
-                </p>
-                <p>
-                    <i class="fas fa-wheat-awn-circle-exclamation" aria-hidden="true"></i> 
-                    Temos opções de massa integral e sem glúten.
-                </p>
-                <p>
-                    <i class="fas fa-wine-bottle" aria-hidden="true"></i> 
-                    Rolha (Traga seu vinho) - R$50.
-                </p>
-            </div>
-            <div class="footer-social" role="complementary" aria-label="Redes sociais">
-                <a href="#" aria-label="Siga-nos no Instagram" rel="noopener noreferrer">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#" aria-label="Curta nossa página no Facebook" rel="noopener noreferrer">
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#" aria-label="Entre em contato pelo WhatsApp" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                </a>
-            </div>
-            <p class="copyright">&copy; 2025 Isola - Todos os direitos reservados</p>
+        <div class="menu-legend" role="complementary" aria-label="Legenda do cardápio">
+            <span class="legend-item">
+                <i class="fas fa-leaf" aria-hidden="true"></i> 
+                <span>Vegetariano</span>
+            </span>
+            <span class="legend-item">
+                <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
+                <span>Harmonização</span>
+            </span>
         </div>
-    </footer>
+
+        <nav id="menu-nav" role="navigation" aria-label="Navegação do cardápio">
+            <ul role="menubar">
+                <!-- Category links will be generated here by JS -->
+            </ul>
+        </nav>
+
+        <main id="menu-content" role="main">
+            <!-- Menu sections will be generated here -->
+            <noscript>
+                <div class="noscript-message">
+                    <h2>JavaScript Necessário</h2>
+                    <p>Este cardápio digital requer JavaScript para funcionar corretamente. Por favor, habilite o JavaScript em seu navegador para visualizar o cardápio completo.</p>
+                </div>
+            </noscript>
+        </main>
+
+        <button 
+            id="back-to-top" 
+            aria-label="Voltar ao topo da página" 
+            title="Voltar ao topo"
+            type="button"
+        >
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        </button>
+
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>
+                        <i class="fas fa-info-circle" aria-hidden="true"></i> 
+                        Os pratos podem conter alergênicos, pimenta e cheiro verde.
+                    </p>
+                    <p>
+                        <i class="fas fa-wheat-awn-circle-exclamation" aria-hidden="true"></i> 
+                        Temos opções de massa integral e sem glúten.
+                    </p>
+                    <p>
+                        <i class="fas fa-wine-bottle" aria-hidden="true"></i> 
+                        Rolha (Traga seu vinho) - R$50.
+                    </p>
+                </div>
+                <div class="footer-social" role="complementary" aria-label="Redes sociais">
+                    <a href="#" aria-label="Siga-nos no Instagram" rel="noopener noreferrer">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="Curta nossa página no Facebook" rel="noopener noreferrer">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="Entre em contato pelo WhatsApp" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="copyright">&copy; 2025 Isola - Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
 
     <!-- Scripts -->
     <script src="script.js"></script>

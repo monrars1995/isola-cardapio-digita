@@ -41,13 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Gnocchi al Nero di Seppia con Gamberi e Zucchine", description: "Nhoque a tinta de lula com camarão, abobrinha e tomate cereja", price: "R$79" },
             { name: "Tagliolini al Limone, Gamberi e Crema di Pistacchio", description: "Talharim caseiro ao limão, camarão, creme de pistache e farofa de pão", price: "R$89" }
         ],
-        "Secondi Piatti - Pratos Principais": [
-            { name: "Filetto ai Funghi", description: "Filet mignon grelhado ao molho de cogumelos frescos e batata rústica", price: "R$99" },
-            { name: "Filetto al Pepe Verde", description: "Filet mignon grelhado ao molho de pimenta verde e batata rústica", price: "R$99" },
-            { name: "Polpo alla Griglia", description: "Polvo grelhado com batatas douradas e brócolis", price: "R$119" },
-            { name: "Salmone al Limone", description: "Salmão grelhado ao molho de limão siciliano, alcaparras e purê de batata", price: "R$89" },
-            { name: "Pescato del Giorno", description: "Peixe do dia grelhado com legumes salteados", price: "R$89" },
-            { name: "Cotoletta alla Milanese", description: "Costeleta de porco empanada e frita, acompanha salada de rúcula e tomate cereja", price: "R$79" }
+        "Secondi Piatti - Terra & Mare": [
+            { name: "Filetto al Gorgonzola", description: "Filé ao molho gorgonzola, acompanhado de nhoque frito", price: "R$95" },
+            { name: "Filetto alla Boscaiola", description: "Filé com cogumelos porcini, acompanhado de risotto ao queijo Brie", price: "R$109" },
+            { name: "Gamberoni a Succhittu (4 un)", description: "Camarão VG ao molho chardonnay, pimenta, salsa, acompanhado de purê de batata", price: "R$99" },
+            { name: "Pesce all' Acqua Pazza", description: "Filé de peixe cozinhado no Chardonnay, com tomate fresco, azeitonas e alcaparras, acompanhado de batatas com ervas finas", price: "R$99" },
+            { name: "Tonno Scottato con Cuscuz Mediterraneo", description: "Filé de atum celado, acompanhado de cuscuz Mediterrâneo", price: "R$89" }
         ],
         "Contorni - Acompanhamentos": [
             { name: "Legumes Grelhados", price: "R$25", vegetarian: true },
@@ -73,8 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Tiramisù Classico", description: "Creme de mascarpone, biscoito savoiardi embebido em café e cacau em pó", price: "R$35", vegetarian: true },
             { name: "Panna Cotta com Frutas Vermelhas", description: "Flan de creme de leite com calda de frutas vermelhas frescas", price: "R$32", vegetarian: true },
             { name: "Cannoli Siciliani (2 un)", description: "Massa crocante recheada com creme de ricota doce, frutas cristalizadas e pistache", price: "R$38", vegetarian: true },
-            { name: "Torta Caprese", description: "Torta de chocolate e amêndoas sem farinha, servida com sorvete de creme", price: "R$36", vegetarian: true },
-            { name: "Gelato Artigianale (bola)", description: "Sabores: Pistache, Chocolate Belga, Creme, Limão Siciliano", price: "R$18", vegetarian: true }
+            { name: "Torta Caprese", description: "Torta de chocolate e amêndoas sem farinha, servida com sorvete de creme", price: "R$36", vegetarian: true }
+        ],
+        "Il nostro gelato - Sorvete Artesanal": [
+            { name: "Gelato Pequeno (01 bola)", price: "R$18", vegetarian: true },
+            { name: "Gelato Médio (02 bolas)", price: "R$22", vegetarian: true },
+            { name: "Gelato Grande (03 bolas)", price: "R$30", vegetarian: true },
+            { name: "Gelato al Pistacchio Siciliano DOP (01 bola)", description: "Sorvete de Pistache Siciliano DOP", price: "R$20", vegetarian: true }
         ],
         "Bevande - Bebidas": [
             { name: "Acqua Minerale (com/sem gás) 300ml", price: "R$8", vegetarian: true },
@@ -111,6 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // DOM elements
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const menuApp = document.getElementById('menu-app');
+    const enterMenuBtn = document.getElementById('enter-menu');
+    const aboutRestaurantBtn = document.getElementById('about-restaurant');
+    const backToWelcomeBtn = document.getElementById('back-to-welcome');
+    
     const navList = document.querySelector('#menu-nav ul');
     const menuContent = document.getElementById('menu-content');
     const searchInput = document.getElementById('menu-search');
@@ -120,6 +130,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResultsList = document.querySelector('.search-results-list');
     const closeSearchBtn = document.getElementById('close-search');
     const backToTopBtn = document.getElementById('back-to-top');
+
+    // Welcome screen functionality
+    const showMenu = () => {
+        welcomeScreen.classList.add('hidden');
+        menuApp.classList.remove('hidden');
+        document.body.style.paddingTop = '140px';
+        
+        // Generate menu if not already generated
+        if (!navList.children.length) {
+            generateMenu();
+        }
+    };
+
+    const showWelcome = () => {
+        welcomeScreen.classList.remove('hidden');
+        menuApp.classList.add('hidden');
+        document.body.style.paddingTop = '0';
+        clearSearch();
+    };
+
+    const showAbout = () => {
+        // For now, just show the menu - could be expanded to show an about modal
+        showMenu();
+    };
 
     // Utility functions
     const createSlug = (text) => {
@@ -298,7 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const getCategoryNotes = (category) => {
         const notes = {
             "Paste & Risotti": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Temos também massa integral e sem glúten.",
+            "Secondi Piatti - Terra & Mare": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
             "Pizze": "Adicional de Burrata na Pizza - R$25. Massa com fermentação natural. Opção de massa integral disponível.",
+            "Il nostro gelato - Sorvete Artesanal": "Todos as sobremesas e sorvetes são artesanais de nossa produção. O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade. Todos os pratos são feitos na hora e a preparação pode demorar dependendo do fluxo.",
             "Carta dei Vini": "Rolha (Traga seu vinho) - R$50"
         };
         return notes[category] || null;
@@ -350,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const showSearchResults = () => {
+        const searchResults = document.getElementById('search-results');
         searchResults.classList.remove('hidden');
         document.querySelectorAll('.menu-section').forEach(section => {
             section.style.display = 'none';
@@ -359,7 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearSearch = () => {
         searchInput.value = '';
         searchClear.style.display = 'none';
-        searchResults.classList.add('hidden');
+        const searchResults = document.getElementById('search-results');
+        if (searchResults) {
+            searchResults.classList.add('hidden');
+        }
         document.querySelectorAll('.menu-section').forEach(section => {
             section.style.display = 'block';
         });
@@ -494,6 +534,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bind all event listeners
     const bindEventListeners = () => {
+        // Welcome screen buttons
+        enterMenuBtn.addEventListener('click', showMenu);
+        aboutRestaurantBtn.addEventListener('click', showAbout);
+        backToWelcomeBtn.addEventListener('click', showWelcome);
+
         // Search functionality
         const debouncedSearch = debounce(performSearch, 300);
         
@@ -590,9 +635,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize application
     const init = () => {
         try {
-            generateMenu();
-            setupNavigation();
-            setupAnimations();
+            // Setup initial event listeners
+            bindEventListeners();
             setupBackToTop();
             setupAccessibility();
             setupPerformanceOptimizations();
