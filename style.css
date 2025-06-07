@@ -4,16 +4,16 @@
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Inter', sans-serif;
     
-    /* Color System - Refined Italian Restaurant Palette */
+    /* Color System - Italian Restaurant Red Palette */
     --color-background: #FEFEFE;
     --color-background-section: #FFFFFF;
-    --color-background-alt: #FDFCF9;
+    --color-background-alt: #FDF9F9;
     --color-text-primary: #2C2C2C;
     --color-text-secondary: #6B6B6B;
     --color-text-muted: #9B9B9B;
-    --color-accent: #B8860B; /* Elegant gold */
-    --color-accent-light: #D4AF37;
-    --color-accent-dark: #8B6914;
+    --color-accent: #C41E3A; /* Italian red */
+    --color-accent-light: #E53E3E;
+    --color-accent-dark: #9B1C2C;
     --color-border: #E8E8E8;
     --color-border-light: #F5F5F5;
     
@@ -560,7 +560,7 @@ main#menu-content {
 }
 
 .highlight {
-    background: rgba(184, 134, 11, 0.2);
+    background: rgba(196, 30, 58, 0.2);
     padding: 0 var(--space-1);
     border-radius: var(--radius-sm);
     font-weight: 500;
@@ -903,7 +903,7 @@ footer {
         --color-background: #FFFFFF;
         --color-text-primary: #000000;
         --color-text-secondary: #333333;
-        --color-accent: #0066CC;
+        --color-accent: #C41E3A;
         --color-border: #666666;
     }
 }
