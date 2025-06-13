@@ -41,6 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Gnocchi al Nero di Seppia con Gamberi e Zucchine", description: "Nhoque a tinta de lula com camarão, abobrinha e tomate cereja", price: "R$79" },
             { name: "Tagliolini al Limone, Gamberi e Crema di Pistacchio", description: "Talharim caseiro ao limão, camarão, creme de pistache e farofa de pão", price: "R$89" }
         ],
+        "Secondi Piatti Terra & Mare": [
+            { name: "Filetto al Gorgonzola", description: "Filé ao molho gorgonzola, acompanhado de nhoque frito", price: "R$95" },
+            { name: "Filetto alla Boscaiola", description: "Filé com cogumelos porcini, acompanhado de risotto ao queijo Brie", price: "R$109" },
+            { name: "Gamberoni a Succhittu (4 un)", description: "Camarão VG ao molho chardonnay, pimenta, salsa, acompanhado de purê de batata", price: "R$99" },
+            { name: "Pesce all' Acqua Pazza", description: "Filé de peixe cozinhado no Chardonnay, com tomate fresco, azeitonas e alcaparras, acompanhado de batatas com ervas finas", price: "R$99" },
+            { name: "Tonno Scottato con Cuscuz Mediterraneo", description: "Filé de atum celado, acompanhado de cuscuz Mediterrâneo", price: "R$89" }
+        ],
+        "Dessert - Sobremesas": [
+            { name: "Seadas", description: "Típico pastel da Sardegna, recheado com queijo coalho e coberto com mel orgânico", price: "R$39", vegetarian: true },
+            { name: "Tortino al Cioccolato con Gelato", description: "Petit gateau ao chocolate com sorvete", price: "R$39", vegetarian: true },
+            { name: "Tiramisu'", description: "Camadas de biscoito, café, queijo mascarpone, cacau", price: "R$32", vegetarian: true },
+            { name: "Affogato al Caffe ou Alcoolico", description: "Sorvete de baunilha afogado no café quente ou Amarula", price: "R$29", vegetarian: true },
+            { name: "Coppa Crema", description: "Sorvete cremoso com pedaços de brownie e granela de castanha", price: "R$42", vegetarian: true }
+        ],
+        "Il nostro gelato - Sorvete Artesanal": [
+            { name: "Gelato Pequeno (01 bola)", price: "R$18", vegetarian: true },
+            { name: "Gelato Médio (02 bolas)", price: "R$22", vegetarian: true },
+            { name: "Gelato Grande (03 bolas)", price: "R$30", vegetarian: true },
+            { name: "Gelato al Pistacchio Siciliano DOP (01 bola)", description: "Sorvete de Pistache Siciliano DOP", price: "R$20", vegetarian: true }
+        ],
         "Pizze": [
             { name: "Margherita", description: "Molho de tomate, mozzarella e manjericão", price: "R$59", vegetarian: true },
             { name: "Ai 4 Formaggi", description: "Mozzarella, provolone, gorgonzola e parmesão", price: "R$69", vegetarian: true },
@@ -63,37 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Capricciosa", description: "Molho de tomate, mozzarella, champignon, presunto, azeitona e alcachofra", price: "R$89" },
             { name: "Hortolana", description: "Beringela, abobrinha, alcachofra e cebola roxa", price: "R$79", vegetarian: true }
         ],
-        "Secondi Piatti - Terra & Mare": [
-            { name: "Filetto al Gorgonzola", description: "Filé ao molho gorgonzola, acompanhado de nhoque frito", price: "R$95" },
-            { name: "Filetto alla Boscaiola", description: "Filé com cogumelos porcini, acompanhado de risotto ao queijo Brie", price: "R$109" },
-            { name: "Gamberoni a Succhittu (4 un)", description: "Camarão VG ao molho chardonnay, pimenta, salsa, acompanhado de purê de batata", price: "R$99" },
-            { name: "Pesce all' Acqua Pazza", description: "Filé de peixe cozinhado no Chardonnay, com tomate fresco, azeitonas e alcaparras, acompanhado de batatas com ervas finas", price: "R$99" },
-            { name: "Tonno Scottato con Cuscuz Mediterraneo", description: "Filé de atum celado, acompanhado de cuscuz Mediterrâneo", price: "R$89" }
-        ],
-        "Contorni - Acompanhamentos": [
-            { name: "Legumes Grelhados", price: "R$25", vegetarian: true },
-            { name: "Batata Rústica", price: "R$25", vegetarian: true },
-            { name: "Purê de Batata", price: "R$25", vegetarian: true },
-            { name: "Brócolis Salteado", price: "R$25", vegetarian: true }
-        ],
-        "Menu Bambini - Menu Infantil": [
-            { name: "Spaghetti al Sugo o Burro", price: "R$39", vegetarian: true },
-            { name: "Filetto Grelhado com Batata Frita", price: "R$49" }
-        ],
-        "Dessert - Sobremesas": [
-            { name: "Seadas", description: "Típico pastel da Sardegna, recheado com queijo coalho e coberto com mel orgânico", price: "R$39", vegetarian: true },
-            { name: "Tortino al Cioccolato con Gelato", description: "Petit gateau ao chocolate com sorvete", price: "R$39", vegetarian: true },
-            { name: "Tiramisu'", description: "Camadas de biscoito, café, queijo mascarpone, cacau", price: "R$32", vegetarian: true },
-            { name: "Affogato al Caffe ou Alcoolico", description: "Sorvete de baunilha afogado no café quente ou Amarula", price: "R$29", vegetarian: true },
-            { name: "Coppa Crema", description: "Sorvete cremoso com pedaços de brownie e granela de castanha", price: "R$42", vegetarian: true }
-        ],
-        "Il nostro gelato - Sorvete Artesanal": [
-            { name: "Gelato Pequeno (01 bola)", price: "R$18", vegetarian: true },
-            { name: "Gelato Médio (02 bolas)", price: "R$22", vegetarian: true },
-            { name: "Gelato Grande (03 bolas)", price: "R$30", vegetarian: true },
-            { name: "Gelato al Pistacchio Siciliano DOP (01 bola)", description: "Sorvete de Pistache Siciliano DOP", price: "R$20", vegetarian: true }
-        ],
-        "Bevande - Bebidas": {
+        "Bebidas": {
             "Analcoólicos": [
                 { name: "Café Expresso", price: "R$9" },
                 { name: "Água sem gás 300ml", price: "R$7" },
@@ -587,10 +577,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const notes = {
             "Paste & Risotti": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Temos também massa integral e sem glúten.",
             "Pizze": "Nossas pizzas são preparadas no estilo napoletano moderno em tamanho único de 30cm. Feitas com pré-fermento de longa maturação com temperatura controlada. Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
-            "Secondi Piatti - Terra & Mare": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
+            "Secondi Piatti Terra & Mare": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
             "Dessert - Sobremesas": "Todas as sobremesas são artesanais de nossa produção. O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade.",
             "Il nostro gelato - Sorvete Artesanal": "Todos os sorvetes são artesanais de nossa produção. O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade. Todos os pratos são feitos na hora e a preparação pode demorar dependendo do fluxo.",
-            "Bevande - Bebidas": "Temos uma seleção especial de bebidas artesanais e importadas. Consulte nosso garçom para sugestões de harmonização.",
+            "Bebidas": "Temos uma seleção especial de bebidas artesanais e importadas. Consulte nosso garçom para sugestões de harmonização.",
             "Carta dei Vini": "Nossa carta de vinhos foi cuidadosamente selecionada para harmonizar perfeitamente com nossa culinária italiana. Consulte nosso sommelier para recomendações."
         };
         return notes[category] || null;
