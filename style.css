@@ -490,7 +490,7 @@ header h1::after {
     font-size: var(--text-sm);
 }
 
-/* Navigation - Mobile First */
+/* Navigation - Mobile First with Horizontal Scroll */
 nav#menu-nav {
     background: var(--color-nav-bg);
     border-bottom: 1px solid var(--color-nav-border);
@@ -499,6 +499,7 @@ nav#menu-nav {
     z-index: 999;
     box-shadow: var(--shadow-sm);
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
@@ -515,10 +516,12 @@ nav#menu-nav ul {
     margin: 0;
     gap: var(--space-1);
     min-width: max-content;
+    width: max-content;
 }
 
 nav#menu-nav ul li {
     flex-shrink: 0;
+    white-space: nowrap;
 }
 
 nav#menu-nav ul li a {
@@ -1255,10 +1258,13 @@ footer {
     
     nav#menu-nav {
         top: 140px;
+        overflow-x: visible;
     }
     
     nav#menu-nav ul {
         justify-content: center;
+        width: auto;
+        min-width: auto;
     }
     
     nav#menu-nav ul li a {

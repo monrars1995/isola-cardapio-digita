@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         "Carta dei Vini": {
-            "Espumantes": [
+            "Prosecco Brut": [
                 { name: "Prosecco Brut Faces Brut Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$100" },
                 { name: "Alghero Torbato Brut D.O.C Sella & Mosca", description: "100% Torbato - Sardegna, Itália", price: "R$200" }
             ],
@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeScreen = document.getElementById('welcome-screen');
     const menuApp = document.getElementById('menu-app');
     const enterMenuBtn = document.getElementById('enter-menu');
-    const aboutRestaurantBtn = document.getElementById('about-restaurant');
     const backToWelcomeBtn = document.getElementById('back-to-welcome');
     
     const navList = document.querySelector('#menu-nav ul');
