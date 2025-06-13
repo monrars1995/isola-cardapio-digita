@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { name: "I Piani Nuraghe Majore Sella & Mosca", description: "100% Vermentino - Sardegna, Itália", price: "R$115" },
                 { name: "Falanghina Beneventano Black Label IGP", description: "100% Falanghina - Itália", price: "R$105" }
             ],
-            "Vinhos Rosés": [
+            "Vinhos Roses": [
                 { name: "Alghero Rosato Sella & Mosca", description: "100% Sangiovese - Sardegna, Itália", price: "R$120" },
                 { name: "Vivia Susumaniello Salento IGP", description: "100% Susumaniello - Puglia, Itália", price: "R$105" }
             ],
@@ -215,12 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menuApp.classList.add('hidden');
         document.body.style.paddingTop = '0';
         clearSearch();
-    };
-
-    const showAbout = () => {
-        // For now, just show the menu - this function is a point of extension for future implementations
-        // Could be expanded to show an about modal or navigate to a dedicated section
-        showMenu();
     };
 
     // Utility functions
@@ -762,7 +756,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const bindEventListeners = () => {
         // Welcome screen buttons
         enterMenuBtn.addEventListener('click', showMenu);
-        aboutRestaurantBtn.addEventListener('click', showAbout);
         backToWelcomeBtn.addEventListener('click', showWelcome);
 
         // Search functionality
