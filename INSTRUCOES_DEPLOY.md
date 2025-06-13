@@ -1,27 +1,55 @@
 # 📋 Instruções para Deploy
 
-## 🎯 Como aplicar as alterações no seu repositório
+## 🎯 Como fazer o deploy do cardápio digital
 
-### 1. **Executar o script de deploy**
+### ⚠️ **Importante: WebContainer Limitations**
+Este ambiente não possui Git instalado. Siga as instruções abaixo para fazer o deploy:
+
+### 1. **Baixar os arquivos do projeto**
+- Baixe todos os arquivos do projeto atual
+- Certifique-se de ter: `index.html`, `style.css`, `script.js`, `package.json`, `vercel.json`
+
+### 2. **Criar repositório GitHub (no seu computador local)**
 ```bash
-# Dar permissão de execução
-chmod +x deploy-changes.sh
+# Criar pasta do projeto
+mkdir cardapio-digital
+cd cardapio-digital
 
-# Executar o script
-./deploy-changes.sh
-```
+# Inicializar Git
+git init
 
-### 2. **Ou fazer manualmente:**
-```bash
-# Adicionar arquivos
+# Adicionar arquivos baixados
+# (copie todos os arquivos para esta pasta)
+
+# Adicionar ao Git
 git add .
 
-# Commit
-git commit -m "🔧 Correções do cardápio digital - scroll mobile e categorias"
+# Commit inicial
+git commit -m "🔧 Cardápio digital - versão corrigida
 
-# Push
-git push origin main
+✅ Alterações implementadas:
+- ❌ Removido botão 'Sobre o Restaurante'
+- 🗂️ Removidas categorias 'Contorni' e 'Menu Bambini'
+- 🍷 'Bevande' alterado para 'Bebidas'
+- 🥂 'Vinhos Rosés' alterado para 'Vinhos Roses'
+- 🍾 'Espumantes' alterado para 'Prosecco Brut'
+- 🍷 Nome do vinho corrigido: 'Faces Brut Lidio Carraro'
+- 📱 Scroll horizontal perfeito no navbar mobile
+- 🚀 Configuração Vercel adicionada (vercel.json)
+- 📦 package.json atualizado para deploy"
+
+# Criar repositório no GitHub e conectar
+git remote add origin https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git branch -M main
+git push -u origin main
 ```
+
+### 3. **Deploy na Vercel**
+1. Acesse [vercel.com](https://vercel.com)
+2. Conecte sua conta GitHub
+3. Importe o repositório criado
+4. A Vercel detectará automaticamente o `vercel.json`
+5. Deploy será feito automaticamente
 
 ## 🚀 Configuração Vercel
 
@@ -30,9 +58,9 @@ git push origin main
 - `package.json` - Scripts atualizados
 
 ### 🔗 **Deploy automático:**
-1. Conecte seu repositório GitHub com a Vercel
-2. A Vercel detectará automaticamente o `vercel.json`
-3. Deploy será feito automaticamente a cada push
+- Deploy automático a cada push no GitHub
+- Configuração SPA para roteamento correto
+- Servindo arquivos estáticos otimizados
 
 ## 📱 **Melhorias implementadas:**
 
@@ -56,3 +84,12 @@ git push origin main
 - ✅ Scroll horizontal funcionando no mobile
 - ✅ Todas as correções aplicadas
 - ✅ Performance otimizada
+
+## 🔧 **Alternativa: Deploy direto na Vercel**
+Se preferir, você pode fazer upload direto dos arquivos na Vercel:
+1. Acesse [vercel.com](https://vercel.com)
+2. Clique em "New Project"
+3. Escolha "Browse all templates"
+4. Selecione "Static Site"
+5. Faça upload dos arquivos do projeto
+6. Deploy será feito automaticamente
