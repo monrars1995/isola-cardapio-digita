@@ -62,132 +62,120 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Gelato al Pistacchio Siciliano DOP (01 bola)", description: "Sorvete de Pistache Siciliano DOP", price: "R$20", vegetarian: true }
         ],
         "Pizze": [
-            { name: "Margherita", description: "Molho de tomate, mozzarella e manjericão", price: "R$59", vegetarian: true },
-            { name: "Ai 4 Formaggi", description: "Mozzarella, provolone, gorgonzola e parmesão", price: "R$69", vegetarian: true },
-            { name: "Ai Funghi", description: "Molho de tomate, mozzarella e cogumelos orgânicos", price: "R$69", vegetarian: true },
-            { name: "Napoli", description: "Molho de tomate, anchovas, alcaparras e orégano", price: "R$56" },
-            { name: "Diavola", description: "Molho de tomate, mozzarella e calabresa picante", price: "R$79" },
-            { name: "Speck e Brie", description: "Molho de tomate, mozzarella, presunto cru tipo 'speck' e queijo brie", price: "R$79" },
-            { name: "Provola e Salame", description: "Molho de tomate, salame tipo 'finocchiona' e queijo provolone", price: "R$72" },
-            { name: "Prosciutto e Funghi", description: "Molho de tomate, mozzarella, presunto cozido e funghi champignon", price: "R$79" },
-            { name: "Marinara ai 3 Pomodori", description: "Pomodoro seco, molho de tomate, tomate cereja, orégano, alho e manjericão", price: "R$54", vegetarian: true },
-            { name: "Doppia Margherita", description: "Molho de tomate com dupla mozzarella e parmesão", price: "R$65", vegetarian: true },
-            { name: "Parmigiana", description: "Molho de tomate, mozzarella, beringela grelhada e creme de parmesão", price: "R$69", vegetarian: true },
-            { name: "Sa Sarda", description: "Molho de tomate, toscana artesanal, mozzarella e pecorino romano", price: "R$79" },
-            { name: "Carlofortina", description: "Molho de tomate, mozzarella, atum fresco e cebola", price: "R$66" },
-            { name: "Sa Stobada", description: "Batata ao forno, toscana artesanal e provolone", price: "R$79" },
-            { name: "Guanciotta", description: "Guanciale, gorgonzola, mozzarella e cebola", price: "R$76" },
-            { name: "Parma", description: "Mozzarella, presunto de Parma, rúcula, lascas de parmesão e tomate cereja", price: "R$79" },
-            { name: "Gamberi e Pesto", description: "Molho de tomate, mozzarella, camarão e pesto de manjericão", price: "R$89" },
-            { name: "S'Burrata", description: "Burratinha, mortadela e pistache", price: "R$89" },
-            { name: "Capricciosa", description: "Molho de tomate, mozzarella, champignon, presunto, azeitona e alcachofra", price: "R$89" },
-            { name: "Hortolana", description: "Beringela, abobrinha, alcachofra e cebola roxa", price: "R$79", vegetarian: true }
+            { name: "Margherita", description: "Molho de tomate, mozzarella de búfala e manjericão", price: "R$52", vegetarian: true },
+            { name: "Calabrese", description: "Molho de tomate, mozzarella, linguiça calabresa artesanal e cebola roxa", price: "R$59" },
+            { name: "Portuguesa", description: "Molho de tomate, mozzarella, presunto cozido, ovos, cebola e azeitonas pretas", price: "R$62" },
+            { name: "Quattro Formaggi", description: "Molho de tomate, mozzarella, gorgonzola, provolone e parmesão", price: "R$69", vegetarian: true },
+            { name: "Parma e Rúcula", description: "Molho de tomate, mozzarella, presunto de Parma, rúcula selvagem e lascas de parmesão", price: "R$75" },
+            { name: "Funghi e Tartufo", description: "Molho de tomate, mozzarella, mix de cogumelos frescos e azeite trufado", price: "R$79", vegetarian: true },
+            { name: "Gamberi e Zucchine", description: "Molho de tomate, mozzarella, camarões salteados, abobrinha grelhada e raspas de limão siciliano", price: "R$85" },
+            { name: "Isola Speciale", description: "Molho de tomate, mozzarella de búfala, tomate cereja confit, presunto de Parma, rúcula e pesto", price: "R$89" }
         ],
         "Bebidas": {
             "Analcoólicos": [
-                { name: "Café Expresso", price: "R$9" },
-                { name: "Água sem gás 300ml", price: "R$7" },
-                { name: "Água com gás 300ml", price: "R$9" },
-                { name: "Água de coco", price: "R$9" },
-                { name: "Soda Italiana", price: "R$17" },
-                { name: "Cocktail Isola", price: "R$24" },
-                { name: "Refrigerante", price: "R$8" },
-                { name: "Suco de fruta natural", price: "R$14" },
-                { name: "Suco de uva integral", price: "R$15" }
+                { name: "Café Expresso", price: "R$9", vegetarian: true },
+                { name: "Água sem gás 300ml", price: "R$7", vegetarian: true },
+                { name: "Água com gás 300ml", price: "R$9", vegetarian: true },
+                { name: "Água de coco", price: "R$9", vegetarian: true },
+                { name: "Soda Italiana", price: "R$17", vegetarian: true },
+                { name: "Cocktail Isola", price: "R$24", vegetarian: true },
+                { name: "Refrigerante", price: "R$8", vegetarian: true },
+                { name: "Suco de fruta natural", price: "R$14", vegetarian: true },
+                { name: "Suco de uva integral", price: "R$15", vegetarian: true }
             ],
             "Cervejas": [
-                { name: "Corona", price: "R$15" },
-                { name: "Corona Cero (0% álcool)", price: "R$16" },
-                { name: "Heineken 600ml", price: "R$24" },
-                { name: "Heineken Long Neck", price: "R$16" },
-                { name: "Stella Artois 600ml", price: "R$22" },
-                { name: "Stella Artois Long Neck", price: "R$15" },
-                { name: "Stella Pure Gold (sem glúten)", price: "R$16" }
+                { name: "Corona", price: "R$15", vegetarian: true },
+                { name: "Corona Cero (0% álcool)", price: "R$16", vegetarian: true },
+                { name: "Heineken 600ml", price: "R$24", vegetarian: true },
+                { name: "Heineken Long Neck", price: "R$16", vegetarian: true },
+                { name: "Stella Artois 600ml", price: "R$22", vegetarian: true },
+                { name: "Stella Artois Long Neck", price: "R$15", vegetarian: true },
+                { name: "Stella Pure Gold (sem glúten)", price: "R$16", vegetarian: true }
             ],
             "Super Alcoólicos": [
-                { name: "Rum (dose)", price: "R$15" },
-                { name: "Gin (dose)", price: "R$19" },
-                { name: "Whisky 8 anos", price: "R$19" },
-                { name: "Whisky 12 anos", price: "R$25" },
-                { name: "Cachaça (dose)", price: "R$15" },
-                { name: "Vodka Nacional (dose)", price: "R$15" },
-                { name: "Vodka importada (dose)", price: "R$19" }
+                { name: "Rum (dose)", price: "R$15", vegetarian: true },
+                { name: "Gin (dose)", price: "R$19", vegetarian: true },
+                { name: "Whisky 8 anos", price: "R$19", vegetarian: true },
+                { name: "Whisky 12 anos", price: "R$25", vegetarian: true },
+                { name: "Cachaça (dose)", price: "R$15", vegetarian: true },
+                { name: "Vodka Nacional (dose)", price: "R$15", vegetarian: true },
+                { name: "Vodka importada (dose)", price: "R$19", vegetarian: true }
             ],
             "Digestivos": [
-                { name: "Amarula", price: "R$19" },
-                { name: "Cointreau", price: "R$20" },
-                { name: "Grappa", price: "R$35" },
-                { name: "Sambuca Molinari", price: "R$25" },
-                { name: "Limoncello artesanal", description: "Limão Siciliano orgânico, álcool e açúcar", price: "R$19" },
-                { name: "Mirto artesanal", description: "Baga de mirto, álcool e açúcar", price: "R$19" }
+                { name: "Amarula", price: "R$19", vegetarian: true },
+                { name: "Cointreau", price: "R$20", vegetarian: true },
+                { name: "Grappa", price: "R$35", vegetarian: true },
+                { name: "Sambuca Molinari", price: "R$25", vegetarian: true },
+                { name: "Limoncello artesanal", description: "Limão Siciliano orgânico, álcool e açúcar", price: "R$19", vegetarian: true },
+                { name: "Mirto artesanal", description: "Baga de mirto, álcool e açúcar", price: "R$19", vegetarian: true }
             ],
             "Roskas Especiais": [
-                { name: "Antonio", description: "Vodka, morango, manjericão e açúcar", price: "Nacional R$24 / Importada R$27" },
-                { name: "Ulysse", description: "Vodka, abacaxi, gengibre e açúcar", price: "Nacional R$24 / Importada R$27" },
-                { name: "Tropi", description: "Vodka, morango, maracujá e açúcar", price: "Nacional R$24 / Importada R$27" },
-                { name: "Roska Aperol", description: "Vodka, limão, laranja e aperol", price: "Nacional R$24 / Importada R$27" },
-                { name: "Roska Cocoloco", description: "Vodka, uva, açúcar e água de coco", price: "Nacional R$24 / Importada R$27" }
+                { name: "Antonio", description: "Vodka, morango, manjericão e açúcar", price: "Nacional R$24 / Importada R$27", vegetarian: true },
+                { name: "Ulysse", description: "Vodka, abacaxi, gengibre e açúcar", price: "Nacional R$24 / Importada R$27", vegetarian: true },
+                { name: "Tropi", description: "Vodka, morango, maracujá e açúcar", price: "Nacional R$24 / Importada R$27", vegetarian: true },
+                { name: "Roska Aperol", description: "Vodka, limão, laranja e aperol", price: "Nacional R$24 / Importada R$27", vegetarian: true },
+                { name: "Roska Cocoloco", description: "Vodka, uva, açúcar e água de coco", price: "Nacional R$24 / Importada R$27", vegetarian: true }
             ],
             "Roskas Clássicas": [
-                { name: "Nacional", description: "Conferir sabores com o garçom", price: "R$23" },
-                { name: "Importada", description: "Conferir sabores com o garçom", price: "R$25" }
+                { name: "Nacional", description: "Conferir sabores com o garçom", price: "R$23", vegetarian: true },
+                { name: "Importada", description: "Conferir sabores com o garçom", price: "R$25", vegetarian: true }
             ],
             "Long Drinks": [
-                { name: "Sex on the beach", description: "Vodka, liquor de pêssego, suco laranja e groselha", price: "R$30" },
-                { name: "Aperol Spritz", description: "Aperol, prosecco, laranja e água com gás", price: "R$30" },
-                { name: "Limoncello Spritz", description: "Limoncello, prosecco, limão e água com gás", price: "R$30" },
-                { name: "Cuba Libre", description: "Bacardi, lime e coca cola", price: "R$23" },
-                { name: "Gin Tonic", description: "Gin, lime e água tônica", price: "R$26" }
+                { name: "Sex on the beach", description: "Vodka, liquor de pêssego, suco laranja e groselha", price: "R$30", vegetarian: true },
+                { name: "Aperol Spritz", description: "Aperol, prosecco, laranja e água com gás", price: "R$30", vegetarian: true },
+                { name: "Limoncello Spritz", description: "Limoncello, prosecco, limão e água com gás", price: "R$30", vegetarian: true },
+                { name: "Cuba Libre", description: "Bacardi, lime e coca cola", price: "R$23", vegetarian: true },
+                { name: "Gin Tonic", description: "Gin, lime e água tônica", price: "R$26", vegetarian: true }
             ],
             "Drinks": [
-                { name: "Caipirinha", description: "Limão, cachaça e açúcar", price: "R$22" },
-                { name: "Mojito", description: "Hortelã, açúcar, lime e Bacardi", price: "R$26" },
-                { name: "Daiquiri Basilico", description: "Bacardi, lime, açúcar e manjericão", price: "R$25" },
-                { name: "Cocktail Martini", description: "Gin e Vermut branco", price: "R$27" },
-                { name: "Negroni Sbagliato", description: "Campari, vermut e prosecco", price: "R$30" },
-                { name: "Margarita", description: "Tequila, cointreau e lime", price: "R$30" },
-                { name: "Whisky Sour", description: "Whisky 8 anos, limão siciliano e açúcar", price: "R$30" }
+                { name: "Caipirinha", description: "Limão, cachaça e açúcar", price: "R$22", vegetarian: true },
+                { name: "Mojito", description: "Hortelã, açúcar, lime e Bacardi", price: "R$26", vegetarian: true },
+                { name: "Daiquiri Basilico", description: "Bacardi, lime, açúcar e manjericão", price: "R$25", vegetarian: true },
+                { name: "Cocktail Martini", description: "Gin e Vermut branco", price: "R$27", vegetarian: true },
+                { name: "Negroni Sbagliato", description: "Campari, vermut e prosecco", price: "R$30", vegetarian: true },
+                { name: "Margarita", description: "Tequila, cointreau e lime", price: "R$30", vegetarian: true },
+                { name: "Whisky Sour", description: "Whisky 8 anos, limão siciliano e açúcar", price: "R$30", vegetarian: true }
             ]
         },
         "Carta dei Vini": {
             "Espumantes": [
-                { name: "Prosecco Brut Faces Brut Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$100" },
-                { name: "Alghero Torbato Brut D.O.C Sella & Mosca", description: "100% Torbato - Sardegna, Itália", price: "R$200" }
+                { name: "Prosecco Brut Faces Brut Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$100", vegetarian: true },
+                { name: "Alghero Torbato Brut D.O.C Sella & Mosca", description: "100% Torbato - Sardegna, Itália", price: "R$200", vegetarian: true }
             ],
             "Vinhos Brancos Sud América": [
-                { name: "Dadivas Chardonnay Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$110" },
-                { name: "Faces Chardonnay Lidio Carraro", description: "80% Chardonnay, 15% Riesling, 5% Moscato - Brasil", price: "R$95" },
-                { name: "Leyda Reserva Chardonnay – Leyda", description: "100% Chardonnay - Chile", price: "R$150" },
-                { name: "Mancura Etnia Sauvignon Blanc", description: "100% Sauvignon Blanc - Valle Central, Chile", price: "R$115" }
+                { name: "Dadivas Chardonnay Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$110", vegetarian: true },
+                { name: "Faces Chardonnay Lidio Carraro", description: "80% Chardonnay, 15% Riesling, 5% Moscato - Brasil", price: "R$95", vegetarian: true },
+                { name: "Leyda Reserva Chardonnay – Leyda", description: "100% Chardonnay - Chile", price: "R$150", vegetarian: true },
+                { name: "Mancura Etnia Sauvignon Blanc", description: "100% Sauvignon Blanc - Valle Central, Chile", price: "R$115", vegetarian: true }
             ],
             "Vinhos Brancos Europa": [
-                { name: "Alcesti Edesia Grillo", description: "100% Grillo - Sicilia, Itália", price: "R$115" },
-                { name: "La Cala Sella & Mosca", description: "100% Vermentino - Sardegna, Itália", price: "R$175" },
-                { name: "I Piani Nuraghe Majore Sella & Mosca", description: "100% Vermentino - Sardegna, Itália", price: "R$115" },
-                { name: "Falanghina Beneventano Black Label IGP", description: "100% Falanghina - Itália", price: "R$105" }
+                { name: "Alcesti Edesia Grillo", description: "100% Grillo - Sicilia, Itália", price: "R$115", vegetarian: true },
+                { name: "La Cala Sella & Mosca", description: "100% Vermentino - Sardegna, Itália", price: "R$175", vegetarian: true },
+                { name: "I Piani Nuraghe Majore Sella & Mosca", description: "100% Vermentino - Sardegna, Itália", price: "R$115", vegetarian: true },
+                { name: "Falanghina Beneventano Black Label IGP", description: "100% Falanghina - Itália", price: "R$105", vegetarian: true }
             ],
             "Vinhos Rosés": [
-                { name: "Alghero Rosato Sella & Mosca", description: "100% Sangiovese - Sardegna, Itália", price: "R$120" },
-                { name: "Vivia Susumaniello Salento IGP", description: "100% Susumaniello - Puglia, Itália", price: "R$105" }
+                { name: "Alghero Rosato Sella & Mosca", description: "100% Sangiovese - Sardegna, Itália", price: "R$120", vegetarian: true },
+                { name: "Vivia Susumaniello Salento IGP", description: "100% Susumaniello - Puglia, Itália", price: "R$105", vegetarian: true }
             ],
             "Vinhos Tintos Sud América": [
-                { name: "Faces Merlot Lidio Carraro", description: "75% Merlot, 15% Tannat, 10% Cabernet - Brasil", price: "R$95" },
-                { name: "Isola dei Sapori Cabernet Sauvignon", description: "100% Cabernet Sauvignon - Brasil", price: "R$105" },
-                { name: "Leyda Reserva Carmenere Rapel", description: "100% Carmenere - Chile", price: "R$150" }
+                { name: "Faces Merlot Lidio Carraro", description: "75% Merlot, 15% Tannat, 10% Cabernet - Brasil", price: "R$95", vegetarian: true },
+                { name: "Isola dei Sapori Cabernet Sauvignon", description: "100% Cabernet Sauvignon - Brasil", price: "R$105", vegetarian: true },
+                { name: "Leyda Reserva Carmenere Rapel", description: "100% Carmenere - Chile", price: "R$150", vegetarian: true }
             ],
             "Vinhos Tintos Europa": [
-                { name: "Chianti Poggio Tosco DOCG", description: "90% Sangiovese, 10% Canaiolo - Toscana, Itália", price: "R$130" },
-                { name: "Aglianico Beneventano Black Label IGP", description: "100% Aglianico - Campania, Itália", price: "R$105" },
-                { name: "Sybar Primitivo IGP", description: "100% Primitivo di Puglia - Itália", price: "R$160" },
-                { name: "Alcesti Nero D'Avola", description: "100% Nero D'Avola - Sicilia, Itália", price: "R$115" },
-                { name: "Defuk Pinot Nero", description: "100% Pinot Nero - Toscana, Itália", price: "R$115" },
-                { name: "San Marzano II Pumo Negroamaro di Salento IGP", description: "100% Negramaro - Puglia, Itália", price: "R$160" },
-                { name: "Cannonau DOC Sella & Mosca", description: "100% Cannonau - Sardegna, Itália", price: "R$115" },
-                { name: "Cannonau Reserva Sella & Mosca", description: "100% Cannonau - Sardegna, Itália", price: "R$220" }
+                { name: "Chianti Poggio Tosco DOCG", description: "90% Sangiovese, 10% Canaiolo - Toscana, Itália", price: "R$130", vegetarian: true },
+                { name: "Aglianico Beneventano Black Label IGP", description: "100% Aglianico - Campania, Itália", price: "R$105", vegetarian: true },
+                { name: "Sybar Primitivo IGP", description: "100% Primitivo di Puglia - Itália", price: "R$160", vegetarian: true },
+                { name: "Alcesti Nero D'Avola", description: "100% Nero D'Avola - Sicilia, Itália", price: "R$115", vegetarian: true },
+                { name: "Defuk Pinot Nero", description: "100% Pinot Nero - Toscana, Itália", price: "R$115", vegetarian: true },
+                { name: "San Marzano II Pumo Negroamaro di Salento IGP", description: "100% Negramaro - Puglia, Itália", price: "R$160", vegetarian: true },
+                { name: "Cannonau DOC Sella & Mosca", description: "100% Cannonau - Sardegna, Itália", price: "R$115", vegetarian: true },
+                { name: "Cannonau Reserva Sella & Mosca", description: "100% Cannonau - Sardegna, Itália", price: "R$220", vegetarian: true }
             ],
             "Vinhos da Casa": [
-                { name: "Vinho da casa 500ml", description: "Merlot ou Chardonnay", price: "R$65" },
-                { name: "Taça de vinho", price: "R$24" }
+                { name: "Vinho da casa 500ml", description: "Merlot ou Chardonnay", price: "R$65", vegetarian: true },
+                { name: "Taça de vinho", price: "R$24", vegetarian: true }
             ]
         }
     };
