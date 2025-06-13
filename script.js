@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "Carta dei Vini": {
             "Prosecco Brut": [
-                { name: "Prosecco Brut Faces Brut Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$100" },
+                { name: "Faces Brut Lidio Carraro", description: "100% Chardonnay - Brasil", price: "R$100" },
                 { name: "Alghero Torbato Brut D.O.C Sella & Mosca", description: "100% Torbato - Sardegna, Itália", price: "R$200" }
             ],
             "Vinhos Brancos Sud América": [
