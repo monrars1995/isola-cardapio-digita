@@ -2,11 +2,12 @@
   "name": "isola-digital-menu",
   "version": "1.0.0",
   "description": "Digital menu for Isola Italian restaurant",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build": "echo 'Build completed - static files are ready to serve'"
+    "build": "echo 'Build completed - static files are ready to serve'",
+    "vercel-build": "echo 'Vercel build completed - serving static files from root'"
   },
   "keywords": ["restaurant", "menu", "italian", "digital"],
   "author": "Isola Restaurant",
