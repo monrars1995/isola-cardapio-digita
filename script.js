@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Gelato Grande (03 bolas)", price: "R$30", vegetarian: true },
             { name: "Gelato al Pistacchio Siciliano DOP (01 bola)", description: "Sorvete de Pistache Siciliano DOP", price: "R$20", vegetarian: true }
         ],
-        "Pizze": [
+        "Pizza": [
             { name: "Margherita", description: "Molho de tomate, mozzarella de búfala e manjericão", price: "R$52", vegetarian: true },
             { name: "Calabrese", description: "Molho de tomate, mozzarella, linguiça calabresa artesanal e cebola roxa", price: "R$59" },
             { name: "Portuguesa", description: "Molho de tomate, mozzarella, presunto cozido, ovos, cebola e azeitonas pretas", price: "R$62" },
@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getCategoryNotes = (category) => {
         const notes = {
             "Paste & Risotti": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Temos também massa integral e sem glúten.",
-            "Pizze": "Nossas pizzas são preparadas no estilo napoletano moderno em tamanho único de 30cm. Feitas com pré-fermento de longa maturação com temperatura controlada. Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
+            "Pizza": "Nossas pizzas são preparadas no estilo napoletano moderno em tamanho único de 30cm. Feitas com pré-fermento de longa maturação com temperatura controlada. Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
             "Secondi Piatti Terra & Mare": "Os pratos podem conter alergênicos, pimenta e cheiro verde. Comunique ao garçom eventuais restrições.",
             "Dessert - Sobremesas": "Todas as sobremesas são artesanais de nossa produção. O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade.",
             "Il nostro gelato - Sorvete Artesanal": "Todos os sorvetes são artesanais de nossa produção. O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade. Todos os pratos são feitos na hora e a preparação pode demorar dependendo do fluxo.",
