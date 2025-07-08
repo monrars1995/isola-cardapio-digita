@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital - Isola</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Cardápio digital do restaurante italiano Isola. Conheça nossos pratos de alta gastronomia italiana com ingredientes frescos e autênticos.">
+    <meta name="keywords" content="restaurante italiano, cardápio digital, gastronomia italiana, Isola, pasta, pizza, risotto">
+    <meta name="author" content="Restaurante Isola">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Cardápio Digital - Isola">
+    <meta property="og:description" content="Descubra a autêntica culinária italiana no Isola. Cardápio digital com pratos tradicionais e contemporâneos.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cardápio Digital - Isola">
+    <meta name="twitter:description" content="Autêntica culinária italiana com ingredientes frescos e receitas tradicionais.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#C41E3A">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Isola",
+        "description": "Restaurante italiano com culinária autêntica e ingredientes frescos",
+        "servesCuisine": "Italian",
+        "hasMenu": {
+            "@type": "Menu",
+            "name": "Cardápio Digital Isola"
+        },
+        "priceRange": "$$"
+    }
+    </script>
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-logo">
+                <h1>Isola</h1>
+                <div class="logo-subtitle">Cucina Italiana</div>
+            </div>
+            
+            <div class="welcome-description">
+                <p>O Isola Cucina Italiana nasceu da ideia de recriar um ambiente típico de uma casa na Itália, com produtos tradicionais da cozinha familiar, para garantir o máximo nível de qualidade.</p>
+            </div>
+            
+            <div class="welcome-buttons">
+                <button id="enter-menu" class="welcome-btn primary">
+                    <i class="fas fa-utensils"></i>
+                    Ver Cardápio
+                </button>
+            </div>
+            
+            <div class="welcome-info">
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Todos os pratos são feitos na hora</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-chef-hat"></i>
+                    <span>Produtos artesanais de nossa produção</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="welcome-background">
+            <div class="bg-pattern"></div>
+        </div>
+    </div>
+
+    <!-- Menu Application -->
+    <div id="menu-app" class="menu-app hidden">
+        <header role="banner">
+            <div class="header-content">
+                <h1>Isola - Cardápio Digital</h1>
+                <div class="search-container" role="search">
+                    <input 
+                        type="text" 
+                        id="menu-search" 
+                        placeholder="Buscar no cardápio..." 
+                        aria-label="Buscar pratos no cardápio"
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                    <button id="search-clear" aria-label="Limpar busca" type="button">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                    <button id="search-button" aria-label="Buscar" type="button">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <button id="back-to-welcome" class="back-btn" aria-label="Voltar ao início">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="menu-legend" role="complementary" aria-label="Legenda do cardápio">
+            <span class="legend-item">
+                <i class="fas fa-leaf" aria-hidden="true"></i> 
+                <span>Vegetariano</span>
+            </span>
+            <span class="legend-item">
+                <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
+                <span>Harmonização</span>
+            </span>
+        </div>
+
+        <nav id="menu-nav" role="navigation" aria-label="Navegação do cardápio">
+            <ul role="menubar">
+                <!-- Category links will be generated here by JS -->
+            </ul>
+        </nav>
+
+        <main id="menu-content" role="main">
+            <!-- Menu sections will be generated here -->
+            <noscript>
+                <div class="noscript-message">
+                    <h2>JavaScript Necessário</h2>
+                    <p>Este cardápio digital requer JavaScript para funcionar corretamente. Por favor, habilite o JavaScript em seu navegador para visualizar o cardápio completo.</p>
+                </div>
+            </noscript>
+        </main>
+
+        <button 
+            id="back-to-top" 
+            aria-label="Voltar ao topo da página" 
+            title="Voltar ao topo"
+            type="button"
+        >
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        </button>
+
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>
+                        <i class="fas fa-info-circle" aria-hidden="true"></i> 
+                        Os pratos podem conter alergênicos, pimenta e cheiro verde.
+                    </p>
+                    <p>
+                        <i class="fas fa-wheat-awn-circle-exclamation" aria-hidden="true"></i> 
+                        Temos opções de massa integral e sem glúten.
+                    </p>
+                    <p>
+                        <i class="fas fa-wine-bottle" aria-hidden="true"></i> 
+                        Rolha (Traga seu vinho) - R$50.
+                    </p>
+                </div>
+                <div class="footer-social" role="complementary" aria-label="Redes sociais">
+                    <a href="#" aria-label="Siga-nos no Instagram" rel="noopener noreferrer">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="Curta nossa página no Facebook" rel="noopener noreferrer">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="Entre em contato pelo WhatsApp" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="copyright">&copy; 2025 Isola - Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- Service Worker Registration (for future PWA features) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Service worker registration can be added here in the future
+            });
+        }
+    </script>
+</body>
+</html>
