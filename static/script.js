@@ -62,14 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Gelato al Pistacchio Siciliano DOP (01 bola)", description: "Sorvete de Pistache Siciliano DOP", price: "R$20", vegetarian: true }
         ],
         "Pizza": [
-            { name: "Margherita", description: "Molho de tomate, mozzarella de búfala e manjericão", price: "R$52", vegetarian: true },
-            { name: "Calabrese", description: "Molho de tomate, mozzarella, linguiça calabresa artesanal e cebola roxa", price: "R$59" },
-            { name: "Portuguesa", description: "Molho de tomate, mozzarella, presunto cozido, ovos, cebola e azeitonas pretas", price: "R$62" },
-            { name: "Quattro Formaggi", description: "Molho de tomate, mozzarella, gorgonzola, provolone e parmesão", price: "R$69", vegetarian: true },
-            { name: "Parma e Rúcula", description: "Molho de tomate, mozzarella, presunto de Parma, rúcula selvagem e lascas de parmesão", price: "R$75" },
-            { name: "Funghi e Tartufo", description: "Molho de tomate, mozzarella, mix de cogumelos frescos e azeite trufado", price: "R$79", vegetarian: true },
-            { name: "Gamberi e Zucchine", description: "Molho de tomate, mozzarella, camarões salteados, abobrinha grelhada e raspas de limão siciliano", price: "R$85" },
-            { name: "Isola Speciale", description: "Molho de tomate, mozzarella de búfala, tomate cereja confit, presunto de Parma, rúcula e pesto", price: "R$89" }
+            { name: "Margherita V", description: "Molho de tomate, mozzarella e manjericão", price: "R$59", vegetarian: true },
+            { name: "Ai 4 Formaggi V", description: "Mozzarella, provolone, gorgonzola e parmesão", price: "R$69", vegetarian: true },
+            { name: "Ai Funghi V", description: "Molho de tomate, mozzarella e cogumelos orgânicos", price: "R$69", vegetarian: true },
+            { name: "Napoli", description: "Molho de tomate, anchovas, alcaparras e orégano", price: "R$56" },
+            { name: "Diavola", description: "Molho de tomate, mozzarella e calabresa picante", price: "R$79" },
+            { name: "Speck e brie", description: "Molho de tomate, mozzarella, presunto cru tipo 'speck' e queijo brie", price: "R$79" },
+            { name: "Provola e Salame", description: "Molho de tomate, salame tipo 'finocchiona' e queijo provolone", price: "R$72" },
+            { name: "Prosciutto e Funghi", description: "Molho de tomate, mozarella, presunto cozido e funghi champignon", price: "R$79" },
+            { name: "Marinara ai 3 Pomodori V", description: "Pomodoro seco, molho de tomate cereja, orégano, alho e manjericão", price: "R$54", vegetarian: true },
+            { name: "Doppia Margherita V", description: "Molho de tomate com dupla mozzarella e parmesão", price: "R$65", vegetarian: true },
+            { name: "Parmigiana V", description: "Molho de tomate, mozzarella, beringela grelhada e creme de parmesão", price: "R$69", vegetarian: true },
+            { name: "Sa Sarda", description: "Molho de tomate, toscana artesanal, mozzarella e romano", price: "R$79" },
+            { name: "Carlofortina", description: "Molho de tomate, mozzarella, atum fresco e cebola", price: "R$66" },
+            { name: "Sa Stobada", description: "Batata ao forno, toscana artesanal e provolone", price: "R$79" },
+            { name: "Guanciotta", description: "Guanciale, gorgonzola, mozzarella e cebola", price: "R$76" },
+            { name: "Parma", description: "Mozzarella, presunto de Parma, rúcula, lascas de parmesão e tomate cereja", price: "R$79" },
+            { name: "Gamberi e Pesto", description: "Molho de tomate, mozzarella, camarão e pesto de manjericão", price: "R$89" },
+            { name: "S'Burrata", description: "Burratinha, mortadela e pistache", price: "R$89" },
+            { name: "Capricciosa", description: "Molho de tomate, mozzarella, champignon, presunto, azeitona e alcachofra", price: "R$89" },
+            { name: "Hortolona V", description: "Beringela, abobrinha, alcachofra e cebola roxa", price: "R$79", vegetarian: true }
         ],
         "Bebidas": {
             "Analcoólicos": [
